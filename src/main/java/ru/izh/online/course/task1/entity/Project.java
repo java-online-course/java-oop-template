@@ -1,7 +1,5 @@
 package ru.izh.online.course.task1.entity;
 
-import java.util.List;
-
 /**
  * Проект
  */
@@ -18,10 +16,10 @@ public interface Project {
      * Назначает всю команду в проект. Метод ОБЯЗАН вызывать метод addDeveloper
      * @param developers
      */
-    boolean addTeam(List<Developer> developers);
+    boolean addTeam(Developer[] developers);
 
     /**
-     * Назначает разработчика на проект. Должен проверять скиллы
+     * Назначает разработчика на проект. Должен вызывать isDeveloperFits
      * @param developer
      * @return
      */

@@ -1,10 +1,8 @@
 package ru.izh.online.course.task1.entity;
 
-import java.util.List;
-
 /**
  * Сущность проект. У проекта есть id, техлид (разработчик уровня 5), команда разработки(бек-девелоперы, тестеры,
- * фронт-девелоперы), заказчик, дата старта, предположительная дата окончания, список названий технологий
+ * фронт-девелоперы), заказчик, дата старта, предположительная дата окончания, список необходимых скиллов
  */
 public class SimpleProject implements Project{
 
@@ -16,7 +14,7 @@ public class SimpleProject implements Project{
         return false;
     }
 
-    public boolean addTeam(List<Developer> developers) {
+    public boolean addTeam(Developer[] developers) {
         return false;
     }
 

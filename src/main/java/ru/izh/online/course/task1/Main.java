@@ -7,9 +7,6 @@ import ru.izh.online.course.task1.entity.dev.AutomatedTester;
 import ru.izh.online.course.task1.entity.dev.BackendDeveloper;
 import ru.izh.online.course.task1.entity.dev.FrontendDeveloper;
 
-import java.util.Arrays;
-import java.util.List;
-
 public class Main {
 
     public static void main(String[] args) {
@@ -18,13 +15,13 @@ public class Main {
         Developer techLead = new BackendDeveloper();
         project.assignTechLead(techLead);
 
-        List<Developer> team = Arrays.asList(
+        Developer[] team = {
                 new FrontendDeveloper(),
                 new FrontendDeveloper(),
                 new BackendDeveloper(),
                 new BackendDeveloper(),
                 new AutomatedTester()
-        );
+        };
         project.addTeam(team);
     }
 }
