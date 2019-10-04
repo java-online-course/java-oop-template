@@ -33,8 +33,8 @@ public class SimpleBookRepository implements BookRepository {
     };
 
     @Override
-    public boolean get(long id) {
-        return false;
+    public Book get(long id) {
+        return null;
     }
 
     @Override
@@ -43,7 +43,7 @@ public class SimpleBookRepository implements BookRepository {
     }
 
     @Override
-    public boolean remove(Book book) {
+    public boolean remove(String name) {
         return false;
     }
 

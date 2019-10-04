@@ -7,18 +7,27 @@ package ru.izh.online.course.task1.entity;
 public class SimpleProject implements Project{
 
     public boolean assignTechLead(Developer developer) {
+        //TODO
         return false;
     }
 
     public boolean isDeveloperFits(Developer developer) {
+        //TODO
         return false;
     }
 
     public boolean addTeam(Developer[] developers) {
+        //TODO
         return false;
     }
 
     public boolean addDeveloper(Developer developer) {
+        //TODO
         return false;
+    }
+
+    public String toString() {
+        //TODO
+        return "";
     }
 }

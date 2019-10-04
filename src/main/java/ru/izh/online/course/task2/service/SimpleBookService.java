@@ -14,8 +14,8 @@ public class SimpleBookService implements BookService {
     private BookRepository bookRepository = new SimpleBookRepository();
 
     @Override
-    public boolean get(long id) {
-        return false;
+    public Book get(long id) {
+        return null;
     }
 
     @Override
@@ -24,18 +24,18 @@ public class SimpleBookService implements BookService {
     }
 
     @Override
-    public boolean remove(Book book) {
+    public boolean remove(String name) {
         return false;
     }
 
     @Override
     public Book[] getAll(String authorName) {
-        return new Book[0];
+        return null;
     }
 
     @Override
     public Book[] getAll(Date publishDate) {
-        return new Book[0];
+        return null;
     }
 
 }

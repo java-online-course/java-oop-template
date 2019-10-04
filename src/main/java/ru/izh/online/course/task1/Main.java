@@ -2,26 +2,42 @@ package ru.izh.online.course.task1;
 
 import ru.izh.online.course.task1.entity.Developer;
 import ru.izh.online.course.task1.entity.Project;
-import ru.izh.online.course.task1.entity.SimpleProject;
-import ru.izh.online.course.task1.entity.dev.AutomatedTester;
-import ru.izh.online.course.task1.entity.dev.BackendDeveloper;
-import ru.izh.online.course.task1.entity.dev.FrontendDeveloper;
 
 public class Main {
 
     public static void main(String[] args) {
-        Project project = new SimpleProject();
+        Project project = getProject();
 
-        Developer techLead = new BackendDeveloper();
+        Developer techLead = getTechLead();
         project.assignTechLead(techLead);
 
-        Developer[] team = {
-                new FrontendDeveloper(),
-                new FrontendDeveloper(),
-                new BackendDeveloper(),
-                new BackendDeveloper(),
-                new AutomatedTester()
-        };
+        Developer[] team = getDevTeam();
         project.addTeam(team);
+
+        printProjectTeamSkills(project);
+    }
+
+    /**
+     * Должен выводить в консоль таблицу
+     * Имя | Фамилия | Уровень | Опыт работы | Список скиллов
+     * @param project - проект с командой и тилидом
+     */
+    static void printProjectTeamSkills(Project project) {
+        //TODO
+    }
+
+    static Developer[] getDevTeam() {
+        //TODO
+        return null;
+    }
+
+    static Developer getTechLead() {
+        //TODO
+        return null;
+    }
+
+    static Project getProject() {
+        //TODO
+        return null;
     }
 }
