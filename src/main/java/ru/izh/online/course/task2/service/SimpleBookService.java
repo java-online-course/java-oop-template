@@ -13,29 +13,54 @@ public class SimpleBookService implements BookService {
 
     private BookRepository bookRepository = new SimpleBookRepository();
 
+    /**
+     * Должен получать книгу по Id из репозитория.
+     * @param id
+     * @return Книгу если найдена. В противном случае печатать в консоль сообщение с ошибкой
+     */
     @Override
     public Book get(long id) {
-        return null;
+        return null; //TODO
     }
 
+    /**
+     * Должен получать добавлять книгу в репозиторий.
+     * @param book
+     * @return true если добавлена. В противном случае печатать в консоль сообщение с ошибкой
+     */
     @Override
     public boolean add(Book book) {
-        return false;
+        return false; //TODO
     }
 
+    /**
+     * Должен удалять книгу по названию из репозитория.
+     * @param name
+     * @return true если удалена. В противном случае печатать в консоль сообщение с ошибкой
+     */
     @Override
     public boolean remove(String name) {
-        return false;
+        return false; //TODO
     }
 
+    /**
+     * Должен получать все книги автора из репозитория.
+     * @param authorName
+     * @return Книги если найдены. В противном случае печатать в консоль сообщение с ошибкой
+     */
     @Override
     public Book[] getAll(String authorName) {
-        return null;
+        return null; //TODO
     }
 
+    /**
+     * Должен получать книгу по Id из репозитория.
+     * @param publishDate
+     * @return Книги если найдены. В противном случае печатать в консоль сообщение с ошибкой
+     */
     @Override
     public Book[] getAll(Date publishDate) {
-        return null;
+        return null; //TODO
     }
 
 }

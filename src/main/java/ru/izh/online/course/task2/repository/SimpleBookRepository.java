@@ -32,28 +32,53 @@ public class SimpleBookRepository implements BookRepository {
             new Book(getNextId(), "Introduction to Algorithms", 1292  , AUTHORS[2], of(2009, 7, 31))
     };
 
+    /**
+     * Должен возвращать сущность типа книга по его id, если такой книги нет, то возвратить null.
+     * @param id ид книги.
+     * @return удалось добавить книгу или нет.
+     */
     @Override
     public Book get(long id) {
-        return null;
+        return null; //TODO
     }
 
+    /**
+     * Должен добавлять в массив книг новую книгу.
+     * @param book сущность книга.
+     * @return true если книга была добавлена.
+     */
     @Override
     public boolean add(Book book) {
-        return false;
+        return false; //TODO
     }
 
+    /**
+     * Должен удалять из массива книг книгу по названию.
+     * @param name название книги
+     * @return true если книга была удалена
+     */
     @Override
     public boolean remove(String name) {
-        return false;
+        return false; //TODO
     }
 
+    /**
+     * Должен возвращать из массива книг все книги с автором authorName
+     * @param authorName
+     * @return Массив книг
+     */
     @Override
     public Book[] getAll(String authorName) {
-        return new Book[0];
+        return new Book[0]; //TODO
     }
 
+    /**
+     * Должен возвращать из массива книг все книги которые были изданы в publishDate
+     * @param publishDate
+     * @return Массив книг
+     */
     @Override
     public Book[] getAll(Date publishDate) {
-        return new Book[0];
+        return new Book[0]; //TODO
     }
 }

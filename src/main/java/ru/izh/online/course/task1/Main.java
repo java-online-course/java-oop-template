@@ -1,7 +1,8 @@
 package ru.izh.online.course.task1;
 
 import ru.izh.online.course.task1.entity.Developer;
-import ru.izh.online.course.task1.entity.Project;
+import ru.izh.online.course.task1.entity.project.Project;
+import ru.izh.online.course.task1.entity.project.SimpleProject;
 
 public class Main {
 
@@ -26,18 +27,24 @@ public class Main {
         //TODO
     }
 
+    /**
+     * @return команду разработки (1 тестировщик, 2 бекендера и 3 фронтендера)
+     */
     static Developer[] getDevTeam() {
-        //TODO
-        return null;
+        return null; //TODO
     }
 
+    /**
+     * @return техлида. Имеет уровень 5
+     */
     static Developer getTechLead() {
-        //TODO
-        return null;
+        return null; //TODO
     }
 
+    /**
+     * @return предзаполненный {@link SimpleProject}
+     */
     static Project getProject() {
-        //TODO
-        return null;
+        return null; //TODO
     }
 }
