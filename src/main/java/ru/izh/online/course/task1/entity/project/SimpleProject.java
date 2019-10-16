@@ -1,10 +1,14 @@
-package ru.izh.online.course.task1.entity;
+package ru.izh.online.course.task1.entity.project;
+
+import ru.izh.online.course.task1.entity.Developer;
 
 /**
  * Сущность проект. У проекта есть id, техлид (разработчик уровня 5), команда разработки(бек-девелоперы, тестеры,
  * фронт-девелоперы), заказчик, дата старта, предположительная дата окончания, список необходимых скиллов
  */
 public class SimpleProject implements Project{
+
+    //TODO поля
 
     /**
      * Метод, назначающий техлида на текущий проект

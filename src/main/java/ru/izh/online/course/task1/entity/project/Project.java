@@ -1,4 +1,6 @@
-package ru.izh.online.course.task1.entity;
+package ru.izh.online.course.task1.entity.project;
+
+import ru.izh.online.course.task1.entity.Developer;
 
 /**
  * Проект
