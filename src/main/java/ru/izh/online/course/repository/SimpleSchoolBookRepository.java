@@ -1,16 +1,16 @@
-package ru.izh.online.course.task2.repository;
+package ru.izh.online.course.repository;
 
-import ru.izh.online.course.task2.entity.Author;
-import ru.izh.online.course.task2.entity.Book;
+import ru.izh.online.course.entity.Author;
+import ru.izh.online.course.entity.Schoolbook;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import static java.time.LocalDate.of;
 
 /**
  * Репозиторий книг. Имеет внутри себя массив книг и методы для работы с ним. ID генерируется методом getNextId
  */
-public class SimpleBookRepository implements BookRepository {
+public class SimpleSchoolBookRepository implements BookRepository<Schoolbook>, SchoolBookRepository {
 
     private static long bookIdHolder;
 
@@ -25,11 +25,11 @@ public class SimpleBookRepository implements BookRepository {
 
     };
 
-    private Book[] books = {
-            new Book(getNextId(), "Effective Java Programming", 412, AUTHORS[0], of(2018, 1 ,6)),
-            new Book(getNextId(), "Java Concurrency in Practice", 432 , AUTHORS[1], of(2006, 5, 19)),
-            new Book(getNextId(), "Concurrent Programming in Java: Design Principles and Patterns", 339 , AUTHORS[1], of(1997, 10, 25)),
-            new Book(getNextId(), "Introduction to Algorithms", 1292  , AUTHORS[2], of(2009, 7, 31))
+    private Schoolbook[] schoolbooks = {
+            new Schoolbook(getNextId(), "Effective Java Programming", 412, AUTHORS[0], of(2018, 1 ,6)),
+            new Schoolbook(getNextId(), "Java Concurrency in Practice", 432 , AUTHORS[1], of(2006, 5, 19)),
+            new Schoolbook(getNextId(), "Concurrent Programming in Java: Design Principles and Patterns", 339 , AUTHORS[1], of(1997, 10, 25)),
+            new Schoolbook(getNextId(), "Introduction to Algorithms", 1292  , AUTHORS[2], of(2009, 7, 31))
     };
 
     /**
@@ -38,17 +38,17 @@ public class SimpleBookRepository implements BookRepository {
      * @return удалось добавить книгу или нет.
      */
     @Override
-    public Book get(long id) {
+    public Schoolbook get(long id) {
         return null; //TODO
     }
 
     /**
      * Должен добавлять в массив книг новую книгу.
-     * @param book сущность книга.
+     * @param schoolbook сущность книга.
      * @return true если книга была добавлена.
      */
     @Override
-    public boolean add(Book book) {
+    public boolean add(Schoolbook schoolbook) {
         return false; //TODO
     }
 
@@ -64,21 +64,21 @@ public class SimpleBookRepository implements BookRepository {
 
     /**
      * Должен возвращать из массива книг все книги с автором authorName
-     * @param authorName
+     * @param name
      * @return Массив книг
      */
     @Override
-    public Book[] getAll(String authorName) {
-        return new Book[0]; //TODO
+    public Schoolbook[] getAll(String name) {
+        return new Schoolbook[0]; //TODO
     }
 
-    /**
-     * Должен возвращать из массива книг все книги которые были изданы в publishDate
-     * @param publishDate
-     * @return Массив книг
-     */
     @Override
-    public Book[] getAll(Date publishDate) {
-        return new Book[0]; //TODO
+    public Schoolbook[] getAuthorBools(Author author) {
+        return new Schoolbook[0]; //TODO
+    }
+
+    @Override
+    public Schoolbook[] getBooksByPublishDate(LocalDate publishDate) {
+        return new Schoolbook[0]; //TODO
     }
 }

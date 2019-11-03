@@ -1,4 +1,4 @@
-package ru.izh.online.course.task2;
+package ru.izh.online.course;
 
 public class Main {
 

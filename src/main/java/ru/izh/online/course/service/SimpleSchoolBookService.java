@@ -1,17 +1,15 @@
-package ru.izh.online.course.task2.service;
+package ru.izh.online.course.service;
 
-import ru.izh.online.course.task2.entity.Book;
-import ru.izh.online.course.task2.repository.BookRepository;
-import ru.izh.online.course.task2.repository.SimpleBookRepository;
-
-import java.util.Date;
+import ru.izh.online.course.entity.Schoolbook;
+import ru.izh.online.course.repository.BookRepository;
+import ru.izh.online.course.repository.SimpleSchoolBookRepository;
 
 /**
  * Сервис по работе с книгами. Должен вызывать bookRepository
  */
-public class SimpleBookService implements BookService {
+public class SimpleSchoolBookService implements BasicBookService<Schoolbook> {
 
-    private BookRepository bookRepository = new SimpleBookRepository();
+    private BookRepository basicEntityRepository = new SimpleSchoolBookRepository();
 
     /**
      * Должен получать книгу по Id из репозитория.
@@ -19,17 +17,17 @@ public class SimpleBookService implements BookService {
      * @return Книгу если найдена. В противном случае печатать в консоль сообщение с ошибкой
      */
     @Override
-    public Book get(long id) {
+    public Schoolbook get(long id) {
         return null; //TODO
     }
 
     /**
      * Должен получать добавлять книгу в репозиторий.
-     * @param book
+     * @param schoolbook
      * @return true если добавлена. В противном случае печатать в консоль сообщение с ошибкой
      */
     @Override
-    public boolean add(Book book) {
+    public boolean add(Schoolbook schoolbook) {
         return false; //TODO
     }
 
@@ -49,18 +47,7 @@ public class SimpleBookService implements BookService {
      * @return Книги если найдены. В противном случае печатать в консоль сообщение с ошибкой
      */
     @Override
-    public Book[] getAll(String authorName) {
+    public Schoolbook[] getAll(String authorName) {
         return null; //TODO
     }
-
-    /**
-     * Должен получать книгу по Id из репозитория.
-     * @param publishDate
-     * @return Книги если найдены. В противном случае печатать в консоль сообщение с ошибкой
-     */
-    @Override
-    public Book[] getAll(Date publishDate) {
-        return null; //TODO
-    }
-
 }
