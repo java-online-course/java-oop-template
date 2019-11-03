@@ -3,14 +3,14 @@ package ru.izh.online.course.entity;
 import java.time.LocalDate;
 
 /**
- * Книга. Кроме id, количества страниц и названия имеет автора и дату публикации
+ * Учебник. Кроме id, количества страниц и названия имеет автора и дату публикации
  */
-public class Book extends BasicEntity{
+public class Schoolbook extends Book {
 
     private Author author;
     private LocalDate publishDate;
 
-    public Book(long id,  String name, int pages, Author author, LocalDate publishDate) {
+    public Schoolbook(long id, String name, int pages, Author author, LocalDate publishDate) {
         this.id = id;
         this.name = name;
         this.pages = pages;

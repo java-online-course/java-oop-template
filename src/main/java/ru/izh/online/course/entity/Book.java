@@ -3,7 +3,7 @@ package ru.izh.online.course.entity;
 /**
  * Базовая сущность для кинг, журналов и тп.
  */
-public abstract class BasicEntity {
+public abstract class Book {
 
     protected long id;
     protected int pages;
