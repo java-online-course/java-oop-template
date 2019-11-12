@@ -1,6 +1,6 @@
-package ru.izh.online.course.entity;
+package com.epam.izh.rd.online.entity;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 /**
  * Учебник. Кроме id, количества страниц и названия имеет автора и дату публикации
@@ -8,9 +8,9 @@ import java.time.LocalDate;
 public class Schoolbook extends Book {
 
     private Author author;
-    private LocalDate publishDate;
+    private Date publishDate;
 
-    public Schoolbook(long id, String name, int pages, Author author, LocalDate publishDate) {
+    public Schoolbook(long id, String name, int pages, Author author, Date publishDate) {
         this.id = id;
         this.name = name;
         this.pages = pages;
@@ -26,11 +26,11 @@ public class Schoolbook extends Book {
         this.author = author;
     }
 
-    public LocalDate getPublishDate() {
+    public Date getPublishDate() {
         return publishDate;
     }
 
-    public void setPublishDate(LocalDate publishDate) {
+    public void setPublishDate(Date publishDate) {
         this.publishDate = publishDate;
     }
 }

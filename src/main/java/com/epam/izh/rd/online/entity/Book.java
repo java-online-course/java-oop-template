@@ -1,4 +1,4 @@
-package ru.izh.online.course.entity;
+package com.epam.izh.rd.online.entity;
 
 /**
  * Базовая сущность для кинг, журналов и тп.

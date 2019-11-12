@@ -1,4 +1,4 @@
-package ru.izh.online.course;
+package com.epam.izh.rd.online;
 
 public class Main {
 
