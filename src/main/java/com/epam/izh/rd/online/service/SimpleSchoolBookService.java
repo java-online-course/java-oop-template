@@ -20,6 +20,14 @@ public class SimpleSchoolBookService implements BasicBookService<Schoolbook> {
     }
 
     /**
+     * @return возвращает число книг в репозитории книг
+     */
+    @Override
+    public int getLibrarySize() {
+        return 0;
+    }
+
+    /**
      * @return массв все авторов, книги которых лежат в репозитории
      */
     @Override

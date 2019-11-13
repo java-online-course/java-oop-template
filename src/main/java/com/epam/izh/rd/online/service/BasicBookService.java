@@ -5,6 +5,8 @@ import com.epam.izh.rd.online.entity.Book;
 
 public interface BasicBookService<T extends Book> {
 
+    int getLibrarySize();
+
     Author[] getAllAuthors();
 
     T getBiggestBook();

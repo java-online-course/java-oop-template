@@ -8,6 +8,8 @@ import com.epam.izh.rd.online.entity.Book;
  */
 public interface BookRepository<T extends Book> {
 
+    long getNextId();
+
     T get(long id);
 
     boolean add(T book);
