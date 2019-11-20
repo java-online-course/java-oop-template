@@ -11,7 +11,7 @@ import com.epam.izh.rd.online.entity.Author;
  * 3) Добавить все методы (пока можно не писать реализацию)
  * 4) Добавить в SimpleAuthorRepository приватное поле "Author[] authors" для хранения авторов
  * 5) Инициалазировать его пустым массивом
- * 6) Написать в классе SimpleAuthorRepository реализацию для всех методов
+ * 6) Написать в классе SimpleAuthorRepository реализацию для всех методов (коллекции не используем, работаем только с массивами)
  */
 public interface AuthorRepository {
 

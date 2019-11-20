@@ -11,7 +11,7 @@ import com.epam.izh.rd.online.entity.Book;
  * 3) Добавить все методы (пока можно не писать реализацию)
  * 4) Добавить в SimpleSchoolBookRepository приватное поле "SchoolBook[] schoolBooks" для хранения школьных книг
  * 5) Инициалазировать его пустым массивом
- * 6) Написать в классе SimpleSchoolBookRepository реализацию для всех методов
+ * 6) Написать в классе SimpleSchoolBookRepository реализацию для всех методов (коллекции не используем, работаем только с массивами)
  */
 public interface BookRepository<T extends Book> {
 
