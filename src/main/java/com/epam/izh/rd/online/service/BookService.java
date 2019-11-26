@@ -20,6 +20,7 @@ import com.epam.izh.rd.online.entity.Book;
  * (который будет устанвливать в поле schoolBookBookRepository и в поле authorService значения)
  * 8) Написать в классе SimpleSchoolBookService реализацию для всех методов
  */
+
 public interface BookService<T extends Book> {
 
     /**
