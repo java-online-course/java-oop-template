@@ -5,7 +5,7 @@ import java.util.Objects;
 
 /**
  * Сущность учебника. Он должен быть унаследован от сущности Book
- *
+ * <p>
  * Необходимо:
  * 1) Унаследовать данный класс от класса Book
  * 2) Создать список полей с указанными типами ровно в этом порядке:
@@ -75,9 +75,10 @@ public class SchoolBook extends Book {
     }
 
     @Override
-    public String toString() {
-        return "SchoolBook{" +
-                "authorName='" + authorName + '\'' +
+    public String toString() { //В toString дополнительно добавил поля из родительского класса, помимо того, что сделала IDE
+        return "SchoolBook{" + "Book name='" + this.getName() + '\'' +
+                ", Pages='" + this.getNumberOfPages() + '\'' +
+                ", authorName='" + authorName + '\'' +
                 ", authorLastName='" + authorLastName + '\'' +
                 ", publishDate=" + publishDate +
                 '}';

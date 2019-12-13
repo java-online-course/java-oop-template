@@ -26,6 +26,17 @@ public class TestSimpleSchoolBookRepository {
         testSchoolBook = testBook.schoolBooks;
         System.out.println(testSchoolBook.length);
         System.out.println(Arrays.toString(testSchoolBook));
-
+        SchoolBook schoolBook3 = new SchoolBook();
+        schoolBook3.setName("Эконом теориЯ");
+        schoolBook3.setAuthorLastName("Петров");
+        testBook.save(schoolBook3);
+        testSchoolBook = testBook.schoolBooks;
+        System.out.println(testSchoolBook.length);
+        System.out.println(Arrays.toString(testSchoolBook));
+        testBook.removeByName("теорияигр");
+        testBook.removeByName("Эконом теориЯ");
+        testSchoolBook = testBook.schoolBooks;
+        System.out.println(testSchoolBook.length);
+        System.out.println(Arrays.toString(testSchoolBook));
     }
 }
