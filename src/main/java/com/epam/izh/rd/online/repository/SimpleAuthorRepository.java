@@ -3,9 +3,7 @@ package com.epam.izh.rd.online.repository;
 import com.epam.izh.rd.online.entity.Author;
 
 public class SimpleAuthorRepository implements AuthorRepository {
-
-    //TODO Удалить все, что для тестов и вернуть private
-    private Author[] authors = {}; //Для тестов при написании
+    private Author[] authors = {};
 
     @Override
     public boolean save(Author author) {

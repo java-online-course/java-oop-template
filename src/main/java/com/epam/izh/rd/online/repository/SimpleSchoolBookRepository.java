@@ -3,7 +3,6 @@ package com.epam.izh.rd.online.repository;
 import com.epam.izh.rd.online.entity.SchoolBook;
 
 public class SimpleSchoolBookRepository implements BookRepository<SchoolBook> {
-    //TODO Удалить все, что для тестов и вернуть private
     private SchoolBook[] schoolBooks = {};
 
     @Override
@@ -40,7 +39,7 @@ public class SimpleSchoolBookRepository implements BookRepository<SchoolBook> {
 
     @Override
     public boolean removeByName(String name) {
-        if(schoolBooks==null) {
+        if (schoolBooks == null) {
             return false;
         }
         int bookNameSearch = schoolBooks.length;
