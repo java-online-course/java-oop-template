@@ -4,7 +4,7 @@ import com.epam.izh.rd.online.entity.SchoolBook;
 
 public class SimpleSchoolBookRepository implements BookRepository<SchoolBook> {
     //TODO Удалить все, что для тестов и вернуть private
-    public SchoolBook[] schoolBooks = {};
+    private SchoolBook[] schoolBooks = {};
 
     @Override
     public boolean save(SchoolBook book) {
@@ -40,25 +40,24 @@ public class SimpleSchoolBookRepository implements BookRepository<SchoolBook> {
 
     @Override
     public boolean removeByName(String name) {
-        int bookNameSearch = schoolBooks.length;
-        if (schoolBooks == null) {
+        if(schoolBooks==null) {
             return false;
-        } else {
-            for (SchoolBook bookName : schoolBooks) {
-                if (bookName.getName().equalsIgnoreCase(name)) {
-                    bookNameSearch--;
-                }
-            }
-            SchoolBook[] schoolBooksResult = new SchoolBook[bookNameSearch];
-            for (int i = 0, j = 0; i < schoolBooks.length; i++) {
-                if (schoolBooks[i].getName().equalsIgnoreCase(name) == false) {
-                    schoolBooksResult[j] = schoolBooks[i];
-                    j++;
-                }
-            }
-            schoolBooks = schoolBooksResult;
-            return true;
         }
+        int bookNameSearch = schoolBooks.length;
+        for (SchoolBook bookName : schoolBooks) {
+            if (bookName.getName().equalsIgnoreCase(name)) {
+                bookNameSearch--;
+            }
+        }
+        SchoolBook[] schoolBooksResult = new SchoolBook[bookNameSearch];
+        for (int i = 0, j = 0; i < schoolBooks.length; i++) {
+            if (!schoolBooks[i].getName().equalsIgnoreCase(name)) {
+                schoolBooksResult[j] = schoolBooks[i];
+                j++;
+            }
+        }
+        schoolBooks = schoolBooksResult;
+        return true;
     }
 
     @Override

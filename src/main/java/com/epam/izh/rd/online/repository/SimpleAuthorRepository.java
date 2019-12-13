@@ -5,7 +5,7 @@ import com.epam.izh.rd.online.entity.Author;
 public class SimpleAuthorRepository implements AuthorRepository {
 
     //TODO Удалить все, что для тестов и вернуть private
-    public Author[] authors = {}; //Для тестов при написании
+    private Author[] authors = {}; //Для тестов при написании
 
     @Override
     public boolean save(Author author) {
