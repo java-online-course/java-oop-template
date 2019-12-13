@@ -4,7 +4,8 @@ import com.epam.izh.rd.online.entity.Author;
 
 public class SimpleAuthorRepository implements AuthorRepository {
 
-    private Author[] authors = {};
+    //TODO Удалить все, что для тестов и вернуть private
+    public Author[] authors = {}; //Для тестов при написании
 
     @Override
     public boolean save(Author author) {
@@ -26,11 +27,10 @@ public class SimpleAuthorRepository implements AuthorRepository {
             return null;
         }
 
-        for (int i = 0; i < authors.length; i++) {
-            if (authors[i].getName().equalsIgnoreCase(name) && authors[i].getLastName().equalsIgnoreCase(lastname)) {
-                return authors[i];
+        for (Author nameAuthor : authors) {
+            if (nameAuthor.getName().equalsIgnoreCase(name) && nameAuthor.getLastName().equalsIgnoreCase(lastname)) {
+                return nameAuthor;
             }
-
         }
 
         return null;
