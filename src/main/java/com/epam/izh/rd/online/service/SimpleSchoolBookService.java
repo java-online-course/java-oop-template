@@ -17,21 +17,14 @@ public class SimpleSchoolBookService implements BookService {
         this.authorService = authorService;
     }
 
-    /**
-     * Метод должен сохранять книгу.
-     * <p>
-     * Перед сохранением книги нужно проверить, сохранен ли такой автор в базе авторов.
-     * То есть вы должен взять имя и фамилию автора из книги и обратиться к сервису авторов и узнать о наличии такого автора.
-     * Напомню, что мы считаем, что двух авторов с одинаковыми именем и фамилией быть не может.
-     * <p>
-     * Если такой автор сущесвует (сохранен) - значит можно сохранять и книгу.
-     * Если же такого автора в базе нет, значит книгу сохранять нельзя.
-     * <p>
-     * Соответственно, если книга была успешно сохранена - метод возвращает true, если же книга не была сохранена - метод возвращает false.
-     */
     @Override
     public boolean save(Book book) {
-        return true;
+        if (authorService.findByFullName(((SchoolBook) book).getAuthorName(), ((SchoolBook) book).getAuthorLastName()) != null) {
+            schoolBookBookRepository.save((SchoolBook) book);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
@@ -54,15 +47,18 @@ public class SimpleSchoolBookService implements BookService {
         return schoolBookBookRepository.count();
     }
 
-    /**
-     * Метод должен возвращать автора книги по названию книги.
-     * <p>
-     * То есть приждется сходить и в репозиторий с книгами и в сервис авторов.
-     * <p>
-     * Если такой книги не найдено, метод должен вернуть null.
-     */
+    //TODO посмотрите пожалуйста
+    //TODO Вопрос... Буду рад если ответите...
+    //TODO Книг может быть несколько, Эконом теория - Иванов, Эконом теория - Петров, Эконом теория - Сидоров и т.д.
+    //TODO Почему тогда возвращаем Author, а не Author[]
+    //TODO Я сделал, что берем автора, первой найденной книги - schoolBook[0], надеюсь правильно
     @Override
     public Author findAuthorByBookName(String name) {
-        return null;
+        SchoolBook[] schoolBook = schoolBookBookRepository.findByName(name);
+        if (schoolBook.length == 0) {
+            return null;
+        } else {
+            return authorService.findByFullName(schoolBook[0].getAuthorName(), schoolBook[0].getAuthorLastName());
+        }
     }
 }
