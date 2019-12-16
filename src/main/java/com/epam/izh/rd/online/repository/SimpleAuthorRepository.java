@@ -7,7 +7,6 @@ public class SimpleAuthorRepository implements AuthorRepository {
 
     @Override
     public boolean save(Author author) {
-        boolean result;
         if (author == findByFullName(author.getName(), author.getLastName())) {
             return  false;
         } else {
