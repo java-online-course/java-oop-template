@@ -19,22 +19,12 @@ public class SimpleSchoolBookService implements BookService<SchoolBook> {
     }
 
     @Override
-    public  boolean save(SchoolBook book) {
-        if(authorService.findByFullName(book.getAuthorName(),book.getAuthorLastName())!=null){
+    public boolean save(SchoolBook book) {
+        if (authorService.findByFullName(book.getAuthorName(), book.getAuthorLastName()) == null) {
+            return false
+        }
             schoolBookBookRepository.save(book);
             return true;
-        }else {
-            return false;
-        }
-//        SchoolBook[] booksArray=schoolBookBookRepository.findByName(bookName);
-//        if(booksArray.length>0){
-//            if(authorService.findByFullName(booksArray[1].getAuthorName(),booksArray[1].getAuthorLastName())!=null){
-//                schoolBookBookRepository.save((SchoolBook)book);
-//                return true;
-//            }
-//
-//        }
-//        return false;
     }
 
     @Override
@@ -44,7 +34,7 @@ public class SimpleSchoolBookService implements BookService<SchoolBook> {
 
     @Override
     public int getNumberOfBooksByName(String name) {
-        Book[] booksWithThatName=schoolBookBookRepository.findByName(name);
+        Book[] booksWithThatName = schoolBookBookRepository.findByName(name);
         return booksWithThatName.length;
     }
 
@@ -61,11 +51,10 @@ public class SimpleSchoolBookService implements BookService<SchoolBook> {
 
     @Override
     public Author findAuthorByBookName(String name) {
-        String bookName=name;
-        SchoolBook[] booksArray=schoolBookBookRepository.findByName(bookName);
-        if(booksArray.length>0){
-           return authorService.findByFullName(booksArray[1].getAuthorName(),booksArray[1].getAuthorLastName());
-
+        String bookName = name;
+        SchoolBook[] booksArray = schoolBookBookRepository.findByName(bookName);
+        if (booksArray.length > 0) {
+            return authorService.findByFullName(booksArray[1].getAuthorName(), booksArray[1].getAuthorLastName());
 
 
         }
