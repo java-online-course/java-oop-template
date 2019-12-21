@@ -18,10 +18,11 @@ import java.util.Objects;
  * 5) Переопределить методы equals и hashCode - используйте генерацию (не забывайте alt+inset)
  * 6) Переопределить метод toString с выводом всех полей (не забывайте alt+inset)
  */
+@SuppressWarnings("unused")
 public class Author {
   private String name;
   private String lastName;
-  private LocalDate birthDate;
+  private LocalDate birthdate;
   private String country;
 
   public Author() {
@@ -30,7 +31,7 @@ public class Author {
   public Author(String name, String lastName, LocalDate birthDate, String country) {
     this.name = name;
     this.lastName = lastName;
-    this.birthDate = birthDate;
+    this.birthdate = birthDate;
     this.country = country;
   }
 
@@ -42,8 +43,8 @@ public class Author {
     return lastName;
   }
 
-  public LocalDate getBirthDate() {
-    return birthDate;
+  public LocalDate getBirthdate() {
+    return birthdate;
   }
 
   public String getCountry() {
@@ -58,8 +59,8 @@ public class Author {
     this.lastName = lastName;
   }
 
-  public void setBirthDate(LocalDate birthDate) {
-    this.birthDate = birthDate;
+  public void setBirthdate(LocalDate birthDate) {
+    this.birthdate = birthDate;
   }
 
   public void setCountry(String country) {
@@ -77,13 +78,13 @@ public class Author {
     Author author = (Author) o;
     return Objects.equals(name, author.name) &&
         Objects.equals(lastName, author.lastName) &&
-        Objects.equals(birthDate, author.birthDate) &&
+        Objects.equals(birthdate, author.birthdate) &&
         Objects.equals(country, author.country);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, lastName, birthDate, country);
+    return Objects.hash(name, lastName, birthdate, country);
   }
 
   @Override
@@ -91,7 +92,7 @@ public class Author {
     return "Author{" +
         "name='" + name + '\'' +
         ", lastName='" + lastName + '\'' +
-        ", birthDate=" + birthDate +
+        ", birthDate=" + birthdate +
         ", country='" + country + '\'' +
         '}';
   }

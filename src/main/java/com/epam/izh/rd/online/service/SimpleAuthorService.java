@@ -1,7 +1,7 @@
 package com.epam.izh.rd.online.service;
 
 import com.epam.izh.rd.online.entity.Author;
-import com.epam.izh.rd.online.service.AuthorService;
+import com.epam.izh.rd.online.repository.AuthorRepository;
 
 public class SimpleAuthorService implements AuthorService {
 
