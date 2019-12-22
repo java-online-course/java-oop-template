@@ -1,7 +1,5 @@
 package com.epam.izh.rd.online.repository;
 
-import com.epam.izh.rd.online.entity.Author;
-import com.epam.izh.rd.online.entity.Book;
 import com.epam.izh.rd.online.entity.SchoolBook;
 import java.util.Arrays;
 
