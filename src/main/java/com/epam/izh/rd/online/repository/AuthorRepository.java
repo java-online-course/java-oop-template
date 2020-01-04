@@ -49,6 +49,7 @@ public interface AuthorRepository {
      * <p>
      * Если автор был найден и удален, метод должен вернуть true, в противном случае, если автор не был найден, метод
      * должен вернуть false.
+     * @return
      */
     boolean remove(Author author);
 
