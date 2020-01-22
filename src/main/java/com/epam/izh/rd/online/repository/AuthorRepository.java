@@ -13,6 +13,8 @@ import com.epam.izh.rd.online.entity.Author;
  * 5) Инициалазировать его пустым массивом
  * 6) Написать в классе SimpleAuthorRepository реализацию для всех методов (коллекции не используем, работаем только с массивами)
  */
+
+
 public interface AuthorRepository {
 
     /**

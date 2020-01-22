@@ -2,6 +2,10 @@ package com.epam.izh.rd.online.service;
 
 import com.epam.izh.rd.online.entity.Author;
 import com.epam.izh.rd.online.entity.Book;
+import com.epam.izh.rd.online.entity.SchoolBook;
+import com.epam.izh.rd.online.repository.BookRepository;
+
+import java.util.Scanner;
 
 /**
  * Интерфейс сервиса для выполнения бизнес логики при работе с книга и авторами и взаимодействием с
@@ -20,6 +24,7 @@ import com.epam.izh.rd.online.entity.Book;
  * (который будет устанвливать в поле schoolBookBookRepository и в поле authorService значения)
  * 8) Написать в классе SimpleSchoolBookService реализацию для всех методов
  */
+
 public interface BookService<T extends Book> {
 
     /**

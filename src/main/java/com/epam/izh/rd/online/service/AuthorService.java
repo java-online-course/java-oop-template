@@ -1,6 +1,7 @@
 package com.epam.izh.rd.online.service;
 
 import com.epam.izh.rd.online.entity.Author;
+import com.epam.izh.rd.online.repository.AuthorRepository;
 
 /**
  * Интерфейс сервиса для выполнения бизнес логики при работе с авторами и взаимодействием с
@@ -16,6 +17,7 @@ import com.epam.izh.rd.online.entity.Author;
  * 6) Создать конструтор с параметром AuthorRepository authorRepository (который будет устанвливать в поле authorRepository значение)
  * 7) Написать в классе SimpleAuthorService реализацию для всех методов
  */
+
 public interface AuthorService {
 
     /**

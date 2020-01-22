@@ -1,6 +1,11 @@
 package com.epam.izh.rd.online.repository;
 
 import com.epam.izh.rd.online.entity.Book;
+import com.epam.izh.rd.online.entity.SchoolBook;
+import sun.security.krb5.SCDynamicStoreConfig;
+
+import javax.swing.plaf.synth.SynthColorChooserUI;
+import java.nio.channels.SelectableChannel;
 
 /**
  * Интерфейс репозитория для хранения данных о книгах
@@ -13,6 +18,7 @@ import com.epam.izh.rd.online.entity.Book;
  * 5) Инициалазировать его пустым массивом
  * 6) Написать в классе SimpleSchoolBookRepository реализацию для всех методов (коллекции не используем, работаем только с массивами)
  */
+
 public interface BookRepository<T extends Book> {
 
     /**
