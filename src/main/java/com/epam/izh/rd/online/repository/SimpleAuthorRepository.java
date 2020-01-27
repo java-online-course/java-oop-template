@@ -3,6 +3,9 @@ package com.epam.izh.rd.online.repository;
 import com.epam.izh.rd.online.entity.Author;
 
 public class SimpleAuthorRepository implements AuthorRepository {
+
+    private Author[] authors = new Author[0];
+
     @Override
     public boolean save(Author author) {
         return false;

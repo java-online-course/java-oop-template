@@ -19,6 +19,7 @@ import java.util.Objects;
  * 6) Переопределить метод toString с выводом всех полей (не забывайте alt+inset)
  */
 public class Author {
+
     // Список полей с указанными типами
     private String name;
     private String lastName;
