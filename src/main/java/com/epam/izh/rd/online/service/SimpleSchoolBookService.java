@@ -22,13 +22,17 @@ public class SimpleSchoolBookService implements BookService {
     }
 
     @Override
-    public boolean save(Book book) {
+    public boolean save(SchoolBook book) {
+        if (authorService.findByFullName(schoolBook.getAuthorName(), schoolBook.getAuthorLastName())!=null){
+            schoolBookBookRepository.save(book);
+            return true;
+        }
         return false;
     }
 
     @Override
     public Book[] findByName(String name) {
-        return new Book[0];
+        return schoolBookBookRepository.findByName(name);
     }
 
     @Override
@@ -43,7 +47,7 @@ public class SimpleSchoolBookService implements BookService {
 
     @Override
     public int count() {
-        return 0;
+        return schoolBookBookRepository.count();
     }
 
     @Override

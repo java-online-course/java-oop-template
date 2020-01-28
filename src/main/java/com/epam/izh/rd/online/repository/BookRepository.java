@@ -31,8 +31,9 @@ public interface BookRepository<T extends Book> {
      * <p>
      * Если книги найдены - метод должен их вернуть.
      * Если найденных по имени книг нет, должен вернуться пустой массив.
+     * @return
      */
-    T[] findByName(String name);
+    Book findByName(String name);
 
     /**
      * Метод должен удалять книги из массива schoolBooks по названию.
