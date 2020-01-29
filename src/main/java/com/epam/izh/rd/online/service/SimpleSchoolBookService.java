@@ -1,14 +1,12 @@
 package com.epam.izh.rd.online.service;
 
 import com.epam.izh.rd.online.entity.Author;
-import com.epam.izh.rd.online.entity.Book;
 import com.epam.izh.rd.online.entity.SchoolBook;
 import com.epam.izh.rd.online.repository.BookRepository;
 
-public class SimpleSchoolBookService implements BookService {
+public class SimpleSchoolBookService implements BookService<SchoolBook> {
 
     private BookRepository<SchoolBook> schoolBookBookRepository;
-
     private AuthorService authorService;
 
     // Дефолтный конструтор (без параметров)
@@ -21,9 +19,10 @@ public class SimpleSchoolBookService implements BookService {
         this.authorService = authorService;
     }
 
+
     @Override
     public boolean save(SchoolBook book) {
-        if (authorService.findByFullName(schoolBook.getAuthorName(), schoolBook.getAuthorLastName())!=null){
+        if (authorService.findByFullName(book.getAuthorName(), book.getAuthorLastName()) != null) {
             schoolBookBookRepository.save(book);
             return true;
         }
@@ -31,18 +30,18 @@ public class SimpleSchoolBookService implements BookService {
     }
 
     @Override
-    public Book[] findByName(String name) {
+    public SchoolBook[] findByName(String name) {
         return schoolBookBookRepository.findByName(name);
     }
 
     @Override
     public int getNumberOfBooksByName(String name) {
-        return 0;
+        return findByName(name).length;
     }
 
     @Override
     public boolean removeByName(String name) {
-        return false;
+        return schoolBookBookRepository.removeByName(name);
     }
 
     @Override
@@ -52,6 +51,7 @@ public class SimpleSchoolBookService implements BookService {
 
     @Override
     public Author findAuthorByBookName(String name) {
-        return null;
+        SchoolBook book = schoolBookBookRepository.findByName(name)[0];
+        return authorService.findByFullName(book.getAuthorName(),book.getAuthorLastName());
     }
 }

@@ -5,7 +5,7 @@ import java.util.Objects;
 
 /**
  * Сущность учебника. Он должен быть унаследован от сущности Book
- *
+ * <p>
  * Необходимо:
  * 1) Унаследовать данный класс от класса Book
  * 2) Создать список полей с указанными типами ровно в этом порядке:
@@ -63,17 +63,16 @@ public class SchoolBook extends Book {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
+        if (!(o instanceof SchoolBook)) return false;
         SchoolBook that = (SchoolBook) o;
-        return Objects.equals(authorName, that.authorName) &&
-                Objects.equals(authorLastName, that.authorLastName) &&
-                Objects.equals(publishDate, that.publishDate);
+        return getAuthorName().equals(that.getAuthorName()) &&
+                getAuthorLastName().equals(that.getAuthorLastName()) &&
+                getPublishDate().equals(that.getPublishDate());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), authorName, authorLastName, publishDate);
+        return Objects.hash(getAuthorName(), getAuthorLastName(), getPublishDate());
     }
 
     @Override

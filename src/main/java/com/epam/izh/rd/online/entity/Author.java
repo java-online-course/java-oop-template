@@ -5,7 +5,7 @@ import java.util.Objects;
 
 /**
  * Класс содержащий информацию об авторе.
- *
+ * <p>
  * Необходимо:
  * 1) Создать список полей с указанными типами ровно в этом порядке:
  * - name с типом String и приватным модификатором доступа
@@ -73,15 +73,14 @@ public class Author {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Author)) return false;
         Author author = (Author) o;
-        return Objects.equals(name, author.name) &&
-                Objects.equals(lastName, author.lastName) &&
-                Objects.equals(birthdate, author.birthdate) &&
-                Objects.equals(country, author.country);
+        return name.equals(author.name) &&
+                lastName.equals(author.lastName) &&
+                birthdate.equals(author.birthdate) &&
+                country.equals(author.country);
     }
 
-    @Override
     public int hashCode() {
         return Objects.hash(name, lastName, birthdate, country);
     }

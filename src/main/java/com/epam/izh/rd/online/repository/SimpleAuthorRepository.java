@@ -36,15 +36,15 @@ public class SimpleAuthorRepository implements AuthorRepository {
     @Override
     // Проверить на ошибку (use foreach)
     /** Массив - это контейнерный объект, который содержит фиксированное количество значений одного типа.
-    Длина массива устанавливается при создании массива. После создания его длина фиксирована.
-    Поэтому, для использования массива, необходимо создать новый массив с новой длиной.
-    И заполнить новый массив значением старого массива.Г
-    For solution used different methods, example:Using System.arraycopy() method to remove element from an array.
-    **/
+     Длина массива устанавливается при создании массива. После создания его длина фиксирована.
+     Поэтому, для использования массива, необходимо создать новый массив с новой длиной.
+     И заполнить новый массив значением старого массива.
+     For solution used different methods, example:Using System.arraycopy() method to remove element from an array.
+     **/
     public boolean remove(Author author) {
         for (int i = 0; i < count(); i++) {
             if (findByFullName(author.getName(), author.getLastName()) != null) {
-                Author[] tempAuthors = new Author [count()];
+                Author[] tempAuthors = new Author[count()];
                 System.arraycopy(authors, 0, tempAuthors, 0, count());
                 authors = new Author[count() - 1];
                 System.arraycopy(tempAuthors, i + 1, authors, i, count());
