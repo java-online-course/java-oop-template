@@ -4,7 +4,7 @@ import java.util.Objects;
 
 /**
  * Базовая сущность для книги. Содержит базовые поля.
- *
+ * <p>
  * Необходимо:
  * 1) Создать список полей с указанными типами ровно в этом порядке:
  * - numberOfPages с типом int и приватным модификатором доступа
@@ -17,4 +17,50 @@ import java.util.Objects;
  */
 public abstract class Book {
 
+    private int numberOfPages;
+    private String name;
+
+    public Book() {
+    }
+
+    public Book(int numberOfPages, String name) {
+        this.numberOfPages = numberOfPages;
+        this.name = name;
+    }
+
+    public int getNumberOfPages() {
+        return numberOfPages;
+    }
+
+    public void setNumberOfPages(int numberOfPages) {
+        this.numberOfPages = numberOfPages;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        Book book = (Book) object;
+        return numberOfPages == book.numberOfPages &&
+                java.util.Objects.equals(name, book.name);
+    }
+
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), numberOfPages, name);
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return "Book{" +
+                "numberOfPages=" + numberOfPages +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

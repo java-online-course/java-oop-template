@@ -1,6 +1,10 @@
 package com.epam.izh.rd.online.repository;
 
 import com.epam.izh.rd.online.entity.Book;
+import com.epam.izh.rd.online.entity.SchoolBook;
+
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Интерфейс репозитория для хранения данных о книгах
