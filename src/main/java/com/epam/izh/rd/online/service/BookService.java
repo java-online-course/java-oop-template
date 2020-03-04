@@ -2,6 +2,8 @@ package com.epam.izh.rd.online.service;
 
 import com.epam.izh.rd.online.entity.Author;
 import com.epam.izh.rd.online.entity.Book;
+import com.epam.izh.rd.online.entity.SchoolBook;
+import com.epam.izh.rd.online.repository.BookRepository;
 
 /**
  * Интерфейс сервиса для выполнения бизнес логики при работе с книга и авторами и взаимодействием с
@@ -71,3 +73,4 @@ public interface BookService<T extends Book> {
      */
     Author findAuthorByBookName(String name);
 }
+

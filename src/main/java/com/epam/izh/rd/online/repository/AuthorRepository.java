@@ -1,8 +1,10 @@
 package com.epam.izh.rd.online.repository;
 
 import com.epam.izh.rd.online.entity.Author;
+import com.epam.izh.rd.online.entity.SchoolBook;
 
 import java.lang.reflect.Array;
+import java.util.Arrays;
 
 /**
  * Интерфейс репозитория для хранения данных об авторах.
@@ -60,49 +62,3 @@ public interface AuthorRepository {
     int count();
 }
 
-public class SimpleAuthorRepository implements AuthorRepository {
-    private Author[] authors = new Author[0];
-
-    @Override
-    public boolean save(Author author) {
-        int arrayLength = count();
-        if (findByFullName(author.getName(), author.getLastName()) == null){
-            Author[] subAuthors = new Author[arrayLength];
-            System.arraycopy(authors, 0, subAuthors, 0, arrayLength);
-            Author[] authors = new Author[arrayLength+1];
-            System.arraycopy(subAuthors, 0, authors, 0, arrayLength);
-            authors[arrayLength+1] = author;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    @Override
-    public Author findByFullName(String name, String lastname) {
-        for (int i = 0; i < authors.length; i++) {
-            if (authors[i].getName().equals(name) && authors[i].getLastName().equals(lastname)){
-                return authors[i];
-            }
-        }
-        return null;
-    }
-
-    @Override
-    public boolean remove(Author author) {
-        if (findByFullName(author.getName(), author.getLastName()) == null){
-            return false;
-        } else {
-            Author elementOfAutors = findByFullName(author.getName(), author.getLastName());
-            for (int i = 0; i < authors.length; i++) {
-
-            }
-            return true;
-        }
-    }
-
-    @Override
-    public int count() {
-        return authors.length;
-    }
-}
