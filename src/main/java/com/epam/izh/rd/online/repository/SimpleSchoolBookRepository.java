@@ -2,6 +2,7 @@ package com.epam.izh.rd.online.repository;
 
 import com.epam.izh.rd.online.entity.SchoolBook;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class SimpleSchoolBookRepository implements  BookRepository<SchoolBook>{
@@ -31,18 +32,45 @@ public class SimpleSchoolBookRepository implements  BookRepository<SchoolBook>{
             }
         }
 
-        SchoolBook[] ss = new SchoolBook[buffList.size()];
-        ss = (SchoolBook[]) buffList.toArray();
-        return new SchoolBook[0];
+        return buffList.toArray(new SchoolBook[buffList.size()]);
     }
 
     @Override
     public boolean removeByName(String name) {
-        return false;
+
+        int countOfDeleted = 0;
+        for (int i = 0; i < schoolBooks.length; i++){
+            if(schoolBooks[i].getName().equals(name)){
+                schoolBooks[i] = null;
+                countOfDeleted ++;
+            }
+        }
+
+        if(countOfDeleted == 0){
+            return false;
+        }
+
+        SchoolBook[] bufferBooks = new SchoolBook[schoolBooks.length - countOfDeleted];
+        for(int i = 0; i < schoolBooks.length; i++){
+            countOfDeleted --;
+            bufferBooks[schoolBooks.length - countOfDeleted] = schoolBooks[i];
+        }
+        schoolBooks = bufferBooks;
+
+        return true;
     }
 
     @Override
     public int count() {
         return 0;
     }
+
+//    public <T> void addItemToArray(T[] ary){
+//
+//        if(ary.length == 0){
+//            T[] ary1 = new <T>[8];
+//        }
+//
+//    }
+
 }

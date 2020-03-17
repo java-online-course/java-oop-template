@@ -57,6 +57,7 @@ public class Main {
         bookService.save(schoolBook2);
 
         Book[] ary = bookService.findByName("aa2");
+        bookService.removeByName("aa2");
 
 
     }
