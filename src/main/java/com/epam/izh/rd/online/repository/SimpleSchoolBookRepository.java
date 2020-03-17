@@ -2,6 +2,8 @@ package com.epam.izh.rd.online.repository;
 
 import com.epam.izh.rd.online.entity.SchoolBook;
 
+import java.util.ArrayList;
+
 public class SimpleSchoolBookRepository implements  BookRepository<SchoolBook>{
 
     private SchoolBook[] schoolBooks = {};
@@ -21,6 +23,16 @@ public class SimpleSchoolBookRepository implements  BookRepository<SchoolBook>{
 
     @Override
     public SchoolBook[] findByName(String name) {
+
+        ArrayList<SchoolBook> buffList = new ArrayList<>();
+        for(SchoolBook element : schoolBooks){
+            if(element.getName().equals(name)){
+                buffList.add(element);
+            }
+        }
+
+        SchoolBook[] ss = new SchoolBook[buffList.size()];
+        ss = (SchoolBook[]) buffList.toArray();
         return new SchoolBook[0];
     }
 
