@@ -2,9 +2,6 @@ package com.epam.izh.rd.online.repository;
 
 import com.epam.izh.rd.online.entity.SchoolBook;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-
 public class SimpleSchoolBookRepository implements  BookRepository<SchoolBook>{
 
     private SchoolBook[] schoolBooks = {};
@@ -25,14 +22,22 @@ public class SimpleSchoolBookRepository implements  BookRepository<SchoolBook>{
     @Override
     public SchoolBook[] findByName(String name) {
 
-        ArrayList<SchoolBook> buffList = new ArrayList<>();
-        for(SchoolBook element : schoolBooks){
-            if(element.getName().equals(name)){
-                buffList.add(element);
+        int count = 0;
+        Integer[] foundIndices = new Integer[schoolBooks.length];
+        for(int i = 0; i < schoolBooks.length; i++){
+            if(schoolBooks[i].getName().equals(name)){
+                foundIndices[count] = i;
+                count ++;
             }
         }
 
-        return buffList.toArray(new SchoolBook[buffList.size()]);
+        SchoolBook[] foundBooks = new SchoolBook[count];
+        for(int i = 0; i < count; i++){
+            foundBooks[i] = schoolBooks[foundIndices[i]];
+        }
+
+        return foundBooks;
+
     }
 
     @Override
@@ -50,10 +55,14 @@ public class SimpleSchoolBookRepository implements  BookRepository<SchoolBook>{
             return false;
         }
 
-        SchoolBook[] bufferBooks = new SchoolBook[schoolBooks.length - countOfDeleted];
+        int countsOfSurvival = schoolBooks.length - countOfDeleted;
+        SchoolBook[] bufferBooks = new SchoolBook[countsOfSurvival];
         for(int i = 0; i < schoolBooks.length; i++){
-            countOfDeleted --;
-            bufferBooks[schoolBooks.length - countOfDeleted] = schoolBooks[i];
+            if(schoolBooks[i] == null){
+                continue;
+            }
+            countsOfSurvival --;
+            bufferBooks[countsOfSurvival] = schoolBooks[i];
         }
         schoolBooks = bufferBooks;
 
@@ -62,15 +71,7 @@ public class SimpleSchoolBookRepository implements  BookRepository<SchoolBook>{
 
     @Override
     public int count() {
-        return 0;
+        return schoolBooks.length;
     }
-
-//    public <T> void addItemToArray(T[] ary){
-//
-//        if(ary.length == 0){
-//            T[] ary1 = new <T>[8];
-//        }
-//
-//    }
 
 }
