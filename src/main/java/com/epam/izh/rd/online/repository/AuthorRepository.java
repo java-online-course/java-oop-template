@@ -28,6 +28,7 @@ public interface AuthorRepository {
      * Подсказка - можно использовать для проверки метод findByFullName.
      * <p>
      * Если сохранение прошло успешно, метод должен вернуть true.
+     * @return
      */
     boolean save(Author author);
 
