@@ -6,7 +6,6 @@ import com.epam.izh.rd.online.repository.AuthorRepository;
 import com.epam.izh.rd.online.repository.BookRepository;
 import com.epam.izh.rd.online.service.AuthorService;
 import com.epam.izh.rd.online.service.BookService;
-import com.sun.deploy.util.ReflectionUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -72,11 +71,10 @@ public class SchoolbookServiceTest {
     @MethodSource("com.epam.izh.rd.online.Providers#testServiceAndRepositories")
     @DisplayName("Проверка наличия классов репозиториев, сервисов и их интерфейсов")
     void testClasses(String canonicalClassName, String interfaceName) {
-        boolean isClassAvailable = ReflectionUtil
-                .isClassAvailable(canonicalClassName, Thread.currentThread().getContextClassLoader());
+        boolean isClassAvailable = isClassAvailable(canonicalClassName, Thread.currentThread().getContextClassLoader());
         assertTrue(isClassAvailable, "Не найден класс " + canonicalClassName);
 
-        Class clazz = ReflectionUtil.getClass(canonicalClassName, Thread.currentThread().getContextClassLoader());
+        Class clazz = getClass(canonicalClassName, Thread.currentThread().getContextClassLoader());
         List<String> interfacesNames = Arrays.asList(clazz.getInterfaces()).stream().map(Class::getCanonicalName)
                 .collect(
                         Collectors.toList());
@@ -102,7 +100,7 @@ public class SchoolbookServiceTest {
     @Test
     @DisplayName("Проверка всей общей логики работы сервисов и репозиториев")
     void testLogic() {
-        Class clazz = ReflectionUtil.getClass("com.epam.izh.rd.online.repository.SimpleAuthorRepository",
+        Class clazz = getClass("com.epam.izh.rd.online.repository.SimpleAuthorRepository",
                 Thread.currentThread().getContextClassLoader());
         AuthorRepository authorRepository = null;
         try {
@@ -113,7 +111,7 @@ public class SchoolbookServiceTest {
             fail("Сначала полностью реализуйте всю стрктуру приложения.");
         }
 
-        clazz = ReflectionUtil.getClass("com.epam.izh.rd.online.repository.SimpleSchoolBookRepository",
+        clazz = getClass("com.epam.izh.rd.online.repository.SimpleSchoolBookRepository",
                 Thread.currentThread().getContextClassLoader());
         BookRepository bookRepository = null;
         try {
@@ -124,7 +122,7 @@ public class SchoolbookServiceTest {
             fail("Сначала полностью реализуйте всю стрктуру приложения.");
         }
 
-        clazz = ReflectionUtil.getClass("com.epam.izh.rd.online.service.SimpleAuthorService",
+        clazz = getClass("com.epam.izh.rd.online.service.SimpleAuthorService",
                 Thread.currentThread().getContextClassLoader());
         AuthorService authorService = null;
         try {
@@ -136,7 +134,7 @@ public class SchoolbookServiceTest {
             fail("Сначала полностью реализуйте всю стрктуру приложения.");
         }
 
-        clazz = ReflectionUtil.getClass("com.epam.izh.rd.online.service.SimpleSchoolBookService",
+        clazz = getClass("com.epam.izh.rd.online.service.SimpleSchoolBookService",
                 Thread.currentThread().getContextClassLoader());
         BookService bookService = null;
         try {
@@ -266,8 +264,7 @@ public class SchoolbookServiceTest {
     }
 
     private Author getNewInstanceOfAuthor(String name, String lastName, LocalDate birthdate, String country) {
-        Class clazz = ReflectionUtil
-                .getClass("com.epam.izh.rd.online.entity.Author", Thread.currentThread().getContextClassLoader());
+        Class clazz = getClass("com.epam.izh.rd.online.entity.Author", Thread.currentThread().getContextClassLoader());
         try {
             Author author = (Author) clazz.newInstance();
 
@@ -286,8 +283,8 @@ public class SchoolbookServiceTest {
 
     private SchoolBook getNewInstanceOfSchoolBook(int numberOfPages, String name, String authorName,
                                                   String authorLastName, LocalDate publishDate) {
-        Class clazz = ReflectionUtil
-                .getClass("com.epam.izh.rd.online.entity.SchoolBook", Thread.currentThread().getContextClassLoader());
+        Class clazz = getClass(
+                "com.epam.izh.rd.online.entity.SchoolBook", Thread.currentThread().getContextClassLoader());
         try {
             SchoolBook schoolBook = (SchoolBook) clazz.newInstance();
 
@@ -310,6 +307,24 @@ public class SchoolbookServiceTest {
         assertNotNull(field, "В классе " + clazz + " не создано поле " + fieldName);
         field.setAccessible(true);
         ReflectionUtils.setField(Objects.requireNonNull(ReflectionUtils.findField(clazz, fieldName)), obj, value);
+    }
+
+
+    private static Class getClass(String name, ClassLoader classLoader) {
+        try {
+            return Class.forName(name, false, classLoader);
+        } catch (Throwable e) {
+            return null;
+        }
+    }
+
+    private static boolean isClassAvailable(String name, ClassLoader classLoader) {
+        try {
+            Class clazz = Class.forName(name, false, classLoader);
+            return clazz != null;
+        } catch (Throwable e) {
+            return false;
+        }
     }
 
 }
