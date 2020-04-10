@@ -14,7 +14,6 @@ import com.epam.izh.rd.online.entity.Author;
  * 6) Написать в классе SimpleAuthorRepository реализацию для всех методов (коллекции не используем, работаем только с массивами)
  */
 public interface AuthorRepository {
-
     /**
      * Метод должен сохранять автора в массив authors.
      * Массив при каждом сохранении должен увеличиваться в размере ровно на 1.
@@ -31,13 +30,14 @@ public interface AuthorRepository {
      */
     boolean save(Author author);
 
+
     /**
      * Метод должен находить в массиве authors автора по имени и фамилии (считаем, что двух авторов
      * с одинаковыми именем и фамилией быть не может.)
      * <p>
      * Если автор с таким именем и фамилией найден - возвращаем его, если же не найден, метод должен вернуть null.
      */
-    Author findByFullName(String name, String lastname);
+    Author findByFullName(String name, String lastName);
 
     /**
      * Метод должен удалять автора из массива authors, если он там имеется.
@@ -57,3 +57,4 @@ public interface AuthorRepository {
      */
     int count();
 }
+

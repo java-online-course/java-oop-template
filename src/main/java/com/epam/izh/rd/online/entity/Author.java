@@ -1,11 +1,13 @@
 package com.epam.izh.rd.online.entity;
 
+import com.epam.izh.rd.online.repository.AuthorRepository;
+
 import java.time.LocalDate;
 import java.util.Objects;
 
 /**
  * Класс содержащий информацию об авторе.
- *
+ * <p>
  * Необходимо:
  * 1) Создать список полей с указанными типами ровно в этом порядке:
  * - name с типом String и приватным модификатором доступа
@@ -19,5 +21,84 @@ import java.util.Objects;
  * 6) Переопределить метод toString с выводом всех полей (не забывайте alt+inset)
  */
 public class Author {
+    // обьявление переменных
+    private String name;
+    private String lastName;
+    private LocalDate birthdate;
+    private String country;
+
+    // дефолтный конструктор
+    public Author() {
+    }
+
+    // конструктор со всеми параметрами
+    public Author(String name, String lastName, LocalDate birthdate, String country) {
+        this.name = name;
+        this.lastName = lastName;
+        this.birthdate = birthdate;
+        this.country = country;
+    }
+
+    // getter and setter
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+
+        this.lastName = lastName;
+    }
+
+    public LocalDate getBirthdate() {
+        return birthdate;
+    }
+
+    public void setBirthdate(LocalDate birthdate) {
+        this.birthdate = birthdate;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+    // переопределение методов equals и hashCode
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Author author = (Author) o;
+        return Objects.equals(getName(), author.getName()) &&
+                Objects.equals(getLastName(), author.getLastName()) &&
+                Objects.equals(getBirthdate(), author.getBirthdate()) &&
+                Objects.equals(getCountry(), author.getCountry());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName(), getLastName(), getBirthdate(), getCountry());
+    }
+
+    // переопределение  метода toString с выводом всех полей
+    @Override
+    public String toString() {
+        return "Author{" +
+                "name='" + name + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", birthdate=" + birthdate +
+                ", country='" + country + '\'' +
+                '}';
+    }
 
 }
