@@ -1,6 +1,7 @@
 package com.epam.izh.rd.online.service;
 
 import com.epam.izh.rd.online.entity.Author;
+import com.epam.izh.rd.online.repository.AuthorRepository;
 
 /**
  * Интерфейс сервиса для выполнения бизнес логики при работе с авторами и взаимодействием с
@@ -24,6 +25,7 @@ public interface AuthorService {
      */
     boolean save(Author author);
 
+
     /**
      * Метод должен находить автора по имени и фамилии.
      * По факту, он просто обращается к репозиторию с авторами и вызывает аналогичный метод, псоле чего возвращает результат.
@@ -42,3 +44,4 @@ public interface AuthorService {
      */
     int count();
 }
+
