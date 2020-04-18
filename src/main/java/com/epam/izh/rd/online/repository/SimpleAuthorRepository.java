@@ -2,9 +2,6 @@ package com.epam.izh.rd.online.repository;
 
 import com.epam.izh.rd.online.entity.Author;
 
-import java.util.Arrays;
-
-
 public class SimpleAuthorRepository implements AuthorRepository {
 
     private Author[] authors = new Author[]{};

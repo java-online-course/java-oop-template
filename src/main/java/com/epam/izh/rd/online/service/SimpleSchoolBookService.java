@@ -4,8 +4,6 @@ import com.epam.izh.rd.online.entity.Author;
 import com.epam.izh.rd.online.entity.SchoolBook;
 import com.epam.izh.rd.online.repository.BookRepository;
 
-import java.util.Arrays;
-
 public class SimpleSchoolBookService implements BookService<SchoolBook> {
 
     private BookRepository<SchoolBook> schoolBookBookRepository;

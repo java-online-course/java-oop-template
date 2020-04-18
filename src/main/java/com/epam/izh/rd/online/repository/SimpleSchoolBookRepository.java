@@ -1,7 +1,5 @@
 package com.epam.izh.rd.online.repository;
 
-import com.epam.izh.rd.online.entity.Author;
-import com.epam.izh.rd.online.entity.Book;
 import com.epam.izh.rd.online.entity.SchoolBook;
 
 import java.util.Arrays;
@@ -9,7 +7,6 @@ import java.util.Arrays;
 public class SimpleSchoolBookRepository implements BookRepository<SchoolBook> {
 
     private SchoolBook[] schoolBooks = new SchoolBook[]{};
-
 
     @Override
     public boolean save(SchoolBook book) {
