@@ -5,7 +5,7 @@ import com.epam.izh.rd.online.entity.Book;
 import com.epam.izh.rd.online.entity.SchoolBook;
 import com.epam.izh.rd.online.repository.BookRepository;
 
-public class SimpleSchoolBookService implements BookService<SchoolBook>{
+public class SimpleSchoolBookService implements BookService<SchoolBook> {
     private BookRepository<SchoolBook> schoolBookBookRepository;
     private AuthorService authorService;
 
@@ -25,7 +25,7 @@ public class SimpleSchoolBookService implements BookService<SchoolBook>{
 
     @Override
     public Book[] findByName(String name) {
-        return  schoolBookBookRepository.findByName(name);
+        return schoolBookBookRepository.findByName(name);
     }
 
     @Override
@@ -45,13 +45,11 @@ public class SimpleSchoolBookService implements BookService<SchoolBook>{
 
     @Override
     public Author findAuthorByBookName(String name) {
-      SchoolBook[] book = (SchoolBook[]) schoolBookBookRepository.findByName(name);
+        SchoolBook[] book = (SchoolBook[]) schoolBookBookRepository.findByName(name);
         if (authorService.count() == 0) {
             return null;
         } else {
             return authorService.findByFullName(book[0].getAuthorName(), book[0].getAuthorLastName());
         }
-
-
     }
 }

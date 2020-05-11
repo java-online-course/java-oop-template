@@ -5,7 +5,7 @@ import com.epam.izh.rd.online.entity.SchoolBook;
 
 import java.util.Arrays;
 
-public class SimpleSchoolBookRepository implements BookRepository <SchoolBook> {
+public class SimpleSchoolBookRepository implements BookRepository<SchoolBook> {
     private SchoolBook[] schoolBooks = new SchoolBook[]{};
 
     @Override
