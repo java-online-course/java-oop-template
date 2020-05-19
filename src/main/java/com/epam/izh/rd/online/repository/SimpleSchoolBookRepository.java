@@ -28,10 +28,11 @@ public class SimpleSchoolBookRepository implements BookRepository<SchoolBook> {
             for (SchoolBook schoolBook : schoolBooks
             ) {
                 if (schoolBook.getName().equals(name)) {
-                   findBook[i] = schoolBook;
-                   i++;
+                    findBook[i] = schoolBook;
+                    i++;
                 }
-            } return Arrays.copyOf(findBook, i);
+            }
+            return Arrays.copyOf(findBook, i);
         } else return new SchoolBook[0];
     }
 
@@ -45,10 +46,10 @@ public class SimpleSchoolBookRepository implements BookRepository<SchoolBook> {
                     count++;
                 }
             }
-            if (count>1) {
+            if (count > 1) {
                 schoolBooks = Arrays.copyOf(schoolBooks, schoolBooks.length - (count - 1));
                 return true;
-            }else {
+            } else {
                 return false;
             }
         } else return false;
@@ -56,8 +57,8 @@ public class SimpleSchoolBookRepository implements BookRepository<SchoolBook> {
 
     @Override
     public int count() {
-        if (schoolBooks != null){
-        return schoolBooks.length;
-        }else return 0;
+        if (schoolBooks != null) {
+            return schoolBooks.length;
+        } else return 0;
     }
 }

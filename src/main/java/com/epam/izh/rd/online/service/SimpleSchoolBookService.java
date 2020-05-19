@@ -22,10 +22,10 @@ public class SimpleSchoolBookService implements BookService<SchoolBook> {
             if (authorService.findByFullName(book.getAuthorName(), book.getAuthorLastName()) != null) {
                 schoolBookBookRepository.save(book);
                 return true;
-            }else {
+            } else {
                 return false;
             }
-        }else {
+        } else {
             return false;
         }
     }

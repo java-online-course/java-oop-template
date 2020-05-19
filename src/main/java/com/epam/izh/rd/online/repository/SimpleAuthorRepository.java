@@ -4,8 +4,9 @@ import com.epam.izh.rd.online.entity.Author;
 
 import java.util.Arrays;
 
-public class SimpleAuthorRepository  implements AuthorRepository{
+public class SimpleAuthorRepository implements AuthorRepository {
     private Author[] authors;
+
     @Override
     public boolean save(Author author) {
         if (authors != null) {
@@ -31,29 +32,30 @@ public class SimpleAuthorRepository  implements AuthorRepository{
                 if (author.getName().equals(name) && author.getLastName().equals(lastname)) {
                     return author;
                 }
-            } return null;
+            }
+            return null;
         } else return null;
     }
 
     @Override
     public boolean remove(Author author) {
-        if (authors != null){
-            for (int i = 0; i <authors.length ; i++) {
-                if (findByFullName(authors[i].getName(), authors[i].getLastName()) != null){
-                    authors [i] = authors[authors.length - 1];
+        if (authors != null) {
+            for (int i = 0; i < authors.length; i++) {
+                if (findByFullName(authors[i].getName(), authors[i].getLastName()) != null) {
+                    authors[i] = authors[authors.length - 1];
                     authors = Arrays.copyOf(authors, authors.length - 1);
                     return true;
                 }
             }
             return false;
-        }else  return false;
+        } else return false;
     }
 
     @Override
     public int count() {
         if (authors != null) {
             return authors.length;
-        }else {
+        } else {
             return 0;
         }
     }
