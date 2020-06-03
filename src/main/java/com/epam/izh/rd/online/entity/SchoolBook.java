@@ -21,28 +21,26 @@ import java.util.Objects;
  */
 public class SchoolBook extends Book {
 
-    private String name;
+    private String authorName;
     private String authorLastName;
     private LocalDate publishDate;
 
     public SchoolBook() {
     }
 
-    public SchoolBook(int numberOfPages, String bookName, String authorName, String authorLastName, LocalDate publishDate) {
-        super(numberOfPages, bookName);
-        this.name = authorName;
+    public SchoolBook(int numberOfPages, String name, String authorName, String authorLastName, LocalDate publishDate) {
+        super(numberOfPages, name);
+        this.authorName = authorName;
         this.authorLastName = authorLastName;
         this.publishDate = publishDate;
     }
 
-    @Override
-    public String getName() {
-        return name;
+    public String getAuthorName() {
+        return authorName;
     }
 
-    @Override
-    public void setName(String name) {
-        this.name = name;
+    public void setAuthorName(String authorName) {
+        this.authorName = authorName;
     }
 
     public String getAuthorLastName() {
@@ -67,20 +65,20 @@ public class SchoolBook extends Book {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         SchoolBook that = (SchoolBook) o;
-        return Objects.equals(name, that.name) &&
+        return Objects.equals(authorName, that.authorName) &&
                 Objects.equals(authorLastName, that.authorLastName) &&
                 Objects.equals(publishDate, that.publishDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), name, authorLastName, publishDate);
+        return Objects.hash(super.hashCode(), authorName, authorLastName, publishDate);
     }
 
     @Override
     public String toString() {
         return "SchoolBook{" +
-                "name='" + name + '\'' +
+                "authorName='" + authorName + '\'' +
                 ", authorLastName='" + authorLastName + '\'' +
                 ", publishDate=" + publishDate +
                 '}';
