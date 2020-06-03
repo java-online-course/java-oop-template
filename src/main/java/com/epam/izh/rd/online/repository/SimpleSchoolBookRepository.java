@@ -18,7 +18,6 @@ public class SimpleSchoolBookRepository implements BookRepository<SchoolBook>{
     @Override
     public SchoolBook[] findByName(String name) {
         return Arrays.stream(schoolBooks).filter(book -> book.getName().equals(name)).toArray(SchoolBook[]::new);
-        //return new SchoolBook[0];
     }
 
     @Override
