@@ -1,6 +1,5 @@
 package com.epam.izh.rd.online.entity;
 
-import java.io.StringReader;
 import java.util.Objects;
 
 /**

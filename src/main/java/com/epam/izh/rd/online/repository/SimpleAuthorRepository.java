@@ -28,7 +28,7 @@ public class SimpleAuthorRepository implements AuthorRepository{
     @Override
     public boolean remove(Author author) {
         int countBefore = count();
-        authors = (Author[]) Arrays.stream(authors).filter(o -> !o.equals(author)).toArray();
+        authors = Arrays.stream(authors).filter(o -> !o.equals(author)).toArray(Author[]::new);
         return countBefore != count();
     }
 
