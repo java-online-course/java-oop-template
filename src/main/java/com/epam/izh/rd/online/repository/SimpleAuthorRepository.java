@@ -3,10 +3,7 @@ package com.epam.izh.rd.online.repository;
 import com.epam.izh.rd.online.entity.Author;
 
 import java.util.Arrays;
-import java.util.Optional;
 import java.util.stream.Stream;
-
-import static org.apache.commons.lang3.ArrayUtils.toArray;
 
 public class SimpleAuthorRepository implements AuthorRepository{
 
