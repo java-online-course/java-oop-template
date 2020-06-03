@@ -15,7 +15,6 @@ public class SimpleAuthorRepository implements AuthorRepository{
     @Override
     public boolean save(Author author) {
         if (findByFullName(author.getName(), author.getLastName()) != null) return false;
-        //authors = Arrays.stream(authors).toArray(Author[]::new);
         authors = Stream.concat(Arrays.stream(authors), Stream.of(author)).toArray(Author[]::new);
         return true;
     }
