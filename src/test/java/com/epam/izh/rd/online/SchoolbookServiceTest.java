@@ -6,7 +6,7 @@ import com.epam.izh.rd.online.repository.AuthorRepository;
 import com.epam.izh.rd.online.repository.BookRepository;
 import com.epam.izh.rd.online.service.AuthorService;
 import com.epam.izh.rd.online.service.BookService;
-import com.sun.deploy.util.ReflectionUtil;
+import com.sun.deploy.util.ReflectionUtil;  // was error, so i had to import deloy.jar
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
