@@ -21,16 +21,16 @@ import java.util.Objects;
 public class Author {
     private String name;
     private String lastName;
-    private LocalDate birthDate;
+    private LocalDate birthdate;
     private String country;
 
     public Author() {
     }
 
-    public Author(String name, String lastName, LocalDate birthDate, String country) {
+    public Author(String name, String lastName, LocalDate birthdate, String country) {
         this.name = name;
         this.lastName = lastName;
-        this.birthDate = birthDate;
+        this.birthdate = birthdate;
         this.country = country;
     }
 
@@ -50,12 +50,12 @@ public class Author {
         this.lastName = lastName;
     }
 
-    public LocalDate getBirthDate() {
-        return birthDate;
+    public LocalDate getBirthdate() {
+        return birthdate;
     }
 
-    public void setBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
+    public void setBirthdate(LocalDate birthdate) {
+        this.birthdate = birthdate;
     }
 
     public String getCountry() {
@@ -73,13 +73,13 @@ public class Author {
         Author author = (Author) o;
         return Objects.equals(name, author.name) &&
                 Objects.equals(lastName, author.lastName) &&
-                Objects.equals(birthDate, author.birthDate) &&
+                Objects.equals(birthdate, author.birthdate) &&
                 Objects.equals(country, author.country);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, lastName, birthDate, country);
+        return Objects.hash(name, lastName, birthdate, country);
     }
 
     @Override
@@ -87,7 +87,7 @@ public class Author {
         return "Author{" +
                 "name='" + name + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", birthDate=" + birthDate +
+                ", birthDate=" + birthdate +
                 ", country='" + country + '\'' +
                 '}';
     }
