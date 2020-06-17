@@ -19,5 +19,76 @@ import java.util.Objects;
  * 6) Переопределить метод toString с выводом всех полей (не забывайте alt+inset)
  */
 public class Author {
+    private String name;
+    private String lastName;
+    private LocalDate birthDate;
+    private String country;
 
+    public Author() {
+    }
+
+    public Author(String name, String lastName, LocalDate birthDate, String country) {
+        this.name = name;
+        this.lastName = lastName;
+        this.birthDate = birthDate;
+        this.country = country;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Author author = (Author) o;
+        return Objects.equals(name, author.name) &&
+                Objects.equals(lastName, author.lastName) &&
+                Objects.equals(birthDate, author.birthDate) &&
+                Objects.equals(country, author.country);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, lastName, birthDate, country);
+    }
+
+    @Override
+    public String toString() {
+        return "Author{" +
+                "name='" + name + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", birthDate=" + birthDate +
+                ", country='" + country + '\'' +
+                '}';
+    }
 }
