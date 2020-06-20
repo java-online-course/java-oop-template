@@ -1,6 +1,7 @@
 package com.epam.izh.rd.online.repository;
 
 import com.epam.izh.rd.online.entity.Author;
+import static java.util.Arrays.copyOf;
 
 public class SimpleAuthorRepository implements AuthorRepository {
     private Author[] authors = new Author[0];
@@ -11,14 +12,9 @@ public class SimpleAuthorRepository implements AuthorRepository {
             return false;
         }
 
-        Author[] authors = new Author[this.authors.length + 1];
-
-        for (int i = 0; i < this.authors.length; i++) {
-            authors[i] = this.authors[i];
-        }
-
-        authors[authors.length - 1] = author;
-        this.authors = authors;
+        Author[] authorsNew = copyOf(this.authors, this.authors.length + 1);
+        authorsNew[authorsNew.length - 1] = author;
+        this.authors = authorsNew;
 
         return true;
     }
@@ -40,17 +36,18 @@ public class SimpleAuthorRepository implements AuthorRepository {
             return false;
         }
 
-        Author[] authors = new Author[this.authors.length - 1];
+        Author[] authorsNew = new Author[this.authors.length - 1];
 
-        int j = 0;
+        int shiftOfArrayElements = 0;
         for (int i = 0; i < this.authors.length; i++) {
             if (this.authors[i] != author) {
-                authors[j] = this.authors[i];
-                j++;
+                authorsNew[i - shiftOfArrayElements] = this.authors[i];
+            } else {
+                shiftOfArrayElements++;
             }
         }
 
-        this.authors = authors;
+        this.authors = authorsNew;
 
         return true;
     }

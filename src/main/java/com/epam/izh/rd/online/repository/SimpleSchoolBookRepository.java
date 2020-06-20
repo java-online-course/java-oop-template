@@ -1,24 +1,18 @@
 package com.epam.izh.rd.online.repository;
 
-import com.epam.izh.rd.online.entity.Author;
 import com.epam.izh.rd.online.entity.SchoolBook;
 
-import java.util.ArrayList;
-import java.util.List;
+import static java.util.Arrays.copyOf;
 
 public class SimpleSchoolBookRepository implements BookRepository<SchoolBook> {
     private SchoolBook[] schoolBooks = new SchoolBook[0];
 
     @Override
     public boolean save(SchoolBook book) {
-        SchoolBook[] schoolBooks = new SchoolBook[this.schoolBooks.length + 1];
 
-        for (int i = 0; i < this.schoolBooks.length; i++) {
-            schoolBooks[i] = this.schoolBooks[i];
-        }
-
-        schoolBooks[schoolBooks.length - 1] = book;
-        this.schoolBooks = schoolBooks;
+        SchoolBook[] schoolBooksNew = copyOf(this.schoolBooks, this.schoolBooks.length + 1);
+        schoolBooksNew[schoolBooksNew.length - 1] = book;
+        this.schoolBooks = schoolBooksNew;
 
         return true;
     }
@@ -37,17 +31,18 @@ public class SimpleSchoolBookRepository implements BookRepository<SchoolBook> {
             return new SchoolBook[0];
         }
 
-        SchoolBook[] resultBooks = new SchoolBook[numberOfBooksFound];
+        SchoolBook[] booksFound = new SchoolBook[numberOfBooksFound];
 
-        int i = 0;
-        for (SchoolBook book: this.schoolBooks) {
-            if (book.getName() == name) {
-                resultBooks[i] = book;
-                i++;
+        int shiftOfArrayElements = 0;
+        for (int i = 0; i < this.schoolBooks.length; i++) {
+            if (this.schoolBooks[i].getName() == name) {
+                booksFound[i - shiftOfArrayElements] = this.schoolBooks[i];
+            } else {
+                shiftOfArrayElements++;
             }
         }
 
-        return resultBooks;
+        return booksFound;
     }
 
     @Override
@@ -63,17 +58,18 @@ public class SimpleSchoolBookRepository implements BookRepository<SchoolBook> {
             }
         }
 
-        SchoolBook[] schoolBooks = new SchoolBook[this.schoolBooks.length - numberOfFoundBooks];
+        SchoolBook[] schoolBooksNew = new SchoolBook[this.schoolBooks.length - numberOfFoundBooks];
 
-        int j = 0;
+        int shiftOfArrayElements = 0;
         for (int i = 0; i < this.schoolBooks.length; i++) {
             if (this.schoolBooks[i].getName() != name) {
-                schoolBooks[j] = this.schoolBooks[i];
-                j++;
+                schoolBooksNew[i - shiftOfArrayElements] = this.schoolBooks[i];
+            } else {
+                shiftOfArrayElements++;
             }
         }
 
-        this.schoolBooks = schoolBooks;
+        this.schoolBooks = schoolBooksNew;
 
         return true;
     }
