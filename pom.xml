@@ -38,6 +38,12 @@
             <artifactId>spring-core</artifactId>
             <version>5.1.5.RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>ru.izh.online.course</groupId>
+            <artifactId>oop-homework-template</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
