@@ -22,15 +22,15 @@ public class SimpleSchoolBookRepository implements BookRepository<SchoolBook> {
     @Override
     public SchoolBook[] findByName(String name) {
         SchoolBook[] result = new SchoolBook[0];
-        for (int i = 0; i < schoolBooks.length; i++) {
-            if (schoolBooks[i].getName().equals(name)) {
+        for (SchoolBook schoolBook : schoolBooks) {
+            if (schoolBook.getName().equals(name)) {
                 if (result.length == 0) {
                     result = new SchoolBook[result.length + 1];
-                    result[0] = schoolBooks[i];
+                    result[0] = schoolBook;
                 } else {
                     SchoolBook[] tmpResult = new SchoolBook[result.length + 1];
                     System.arraycopy(result, 0, tmpResult, 0, result.length);
-                    tmpResult[tmpResult.length - 1] = schoolBooks[i];
+                    tmpResult[tmpResult.length - 1] = schoolBook;
                     result = tmpResult;
                 }
             }
@@ -49,9 +49,7 @@ public class SimpleSchoolBookRepository implements BookRepository<SchoolBook> {
                     schoolBooks = schoolBooksAfterRemove;
                 }
                 else if (i == schoolBooks.length-1) {
-                    for (int j = 0; j < schoolBooks.length-1; j++) {
-                        schoolBooksAfterRemove[j] = schoolBooks[j];
-                    }
+                    System.arraycopy(schoolBooks, 0, schoolBooksAfterRemove, 0, schoolBooks.length - 1);
                     schoolBooks = schoolBooksAfterRemove;
                 }
                 else {

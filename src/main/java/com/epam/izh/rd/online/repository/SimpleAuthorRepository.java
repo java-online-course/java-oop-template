@@ -48,9 +48,7 @@ public class SimpleAuthorRepository implements AuthorRepository {
                         authors = authorsAfterRemove;
                     } else if (index == authors.length - 1) {
                         Author[] authorsAfterRemove = new Author[authors.length - 1];
-                        for (int i = 0; i < authors.length - 1; i++) {
-                            authorsAfterRemove[i] = authors[i];
-                        }
+                        System.arraycopy(authors, 0, authorsAfterRemove, 0, authors.length - 1);
                         authors = authorsAfterRemove;
                     } else {
                         Author[] authorsAfterRemove = new Author[authors.length - 1];
