@@ -71,7 +71,7 @@ public class SchoolBook extends Book {
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        return this.getName().hashCode() + this.getAuthorLastName().hashCode();
     }
 
     @Override

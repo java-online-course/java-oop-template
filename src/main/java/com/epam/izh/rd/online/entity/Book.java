@@ -46,7 +46,7 @@ public abstract class Book {
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        return this.numberOfPages + this.name.hashCode();
     }
 
     @Override

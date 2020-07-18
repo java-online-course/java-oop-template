@@ -81,7 +81,7 @@ public class Author {
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        return this.getName().hashCode()+this.getLastName().hashCode();
     }
 
     @Override
