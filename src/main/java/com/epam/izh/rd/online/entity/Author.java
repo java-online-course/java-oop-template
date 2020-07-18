@@ -69,7 +69,14 @@ public class Author {
 
     @Override
     public boolean equals(Object obj) {
-        return super.equals(obj);
+        boolean areEqual = false;
+        if (obj instanceof Author) {
+            Author objAuthor = (Author) obj;
+            if (objAuthor.getName().equals(this.getName()) && ((Author) obj).getLastName().equals(this.getLastName())) {
+                areEqual = true;
+            }
+        }
+        return areEqual;
     }
 
     @Override

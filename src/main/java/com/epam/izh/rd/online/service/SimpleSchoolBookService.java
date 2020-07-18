@@ -1,11 +1,10 @@
 package com.epam.izh.rd.online.service;
 
 import com.epam.izh.rd.online.entity.Author;
-import com.epam.izh.rd.online.entity.Book;
 import com.epam.izh.rd.online.entity.SchoolBook;
 import com.epam.izh.rd.online.repository.BookRepository;
 
-public class SimpleSchoolBookService implements BookService {
+public class SimpleSchoolBookService implements BookService<SchoolBook> {
 
     private BookRepository<SchoolBook> schoolBookBookRepository;
     private AuthorService authorService;
@@ -19,17 +18,16 @@ public class SimpleSchoolBookService implements BookService {
     }
 
     @Override
-    public boolean save(Book book) {
-        boolean isSaved = false;
-//        if (authorService.findByFullName(book.getAuthorName(), schoolBook.getAuthorLastName()) != null) {
-//            schoolBookBookRepository.save(schoolBook);
-//            isSaved = true;
-//        }
+    public boolean save(SchoolBook book) {boolean isSaved = false;
+        if (authorService.findByFullName(book.getAuthorName(), book.getAuthorLastName()) != null) {
+            schoolBookBookRepository.save(book);
+            isSaved = true;
+        }
         return isSaved;
     }
 
     @Override
-    public Book[] findByName(String name) {
+    public SchoolBook[] findByName(String name) {
         return schoolBookBookRepository.findByName(name);
     }
 

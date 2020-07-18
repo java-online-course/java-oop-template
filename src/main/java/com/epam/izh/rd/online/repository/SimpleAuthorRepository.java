@@ -49,7 +49,7 @@ public class SimpleAuthorRepository implements AuthorRepository {
             }
         }
         authors = tempList.toArray(new Author[tempList.size()]);
-        return false;
+        return authorFound;
     }
 
     @Override

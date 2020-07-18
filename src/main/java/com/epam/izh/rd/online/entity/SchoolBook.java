@@ -76,7 +76,15 @@ public class SchoolBook extends Book {
 
     @Override
     public boolean equals(Object obj) {
-        return super.equals(obj);
+        boolean areEqual = false;
+        if (obj instanceof Book) {
+            Book objBook = (Book) obj;
+            if (objBook.getName().equals(this.getName()) && ((Book) obj).getNumberOfPages() == this.getNumberOfPages()
+            ) {
+                areEqual = true;
+            }
+        }
+        return areEqual;
     }
 
     @Override
