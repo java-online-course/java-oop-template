@@ -7,10 +7,7 @@ import java.util.Arrays;
 
 public class SimpleAuthorRepository implements AuthorRepository {
 
-    private Author[] authors = null;
-
-    public SimpleAuthorRepository() {
-    }
+    private Author[] authors = new Author[0];
 
     @Override
     public boolean save(Author author) {
@@ -45,6 +42,10 @@ public class SimpleAuthorRepository implements AuthorRepository {
         if (findByFullName(author.getName(), author.getLastName()) == null) {
             return false;
         } else {
+            if (authors.length == 1) {
+                authors = new Author[0];
+                return true;
+            }
             for (int i = 0; i < authors.length - 1; i++) {
                 if (findByFullName(author.getName(), author.getLastName()).equals(authors[i])) {
                     Author[] arrayCopy = new Author[authors.length - 1];
@@ -53,8 +54,8 @@ public class SimpleAuthorRepository implements AuthorRepository {
                     authors = arrayCopy;
                 }
             }
+            return true;
         }
-        return true;
     }
 
     @Override
