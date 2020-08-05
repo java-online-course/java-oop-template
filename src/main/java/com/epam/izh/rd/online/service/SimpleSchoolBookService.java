@@ -18,31 +18,44 @@ public class SimpleSchoolBookService implements BookService<SchoolBook> {
 
     @Override
     public boolean save(SchoolBook book) {
-        return false;
+        if (authorService.findByFullName(book.getAuthorName(), book.getAuthorLastName()) == null) {
+            return false;
+        }
+
+        schoolBookBookRepository.save(book);
+        return true;
     }
 
     @Override
     public SchoolBook[] findByName(String name) {
-        return new SchoolBook[0];
+        return schoolBookBookRepository.findByName(name);
     }
 
     @Override
     public int getNumberOfBooksByName(String name) {
-        return 0;
+        return schoolBookBookRepository.findByName(name).length;
     }
 
     @Override
     public boolean removeByName(String name) {
-        return false;
+        return schoolBookBookRepository.removeByName(name);
     }
 
     @Override
     public int count() {
-        return 0;
+        return schoolBookBookRepository.count();
     }
 
     @Override
     public Author findAuthorByBookName(String name) {
-        return null;
+        if (schoolBookBookRepository.findByName(name).length == 0) {
+            return null;
+        }
+        SchoolBook book = schoolBookBookRepository.findByName(name)[0];
+
+        String authorName = book.getAuthorName();
+        String authorLastName = book.getAuthorLastName();
+
+        return authorService.findByFullName(authorName, authorLastName);
     }
 }

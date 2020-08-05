@@ -5,11 +5,11 @@ import com.epam.izh.rd.online.entity.Author;
 import java.util.Arrays;
 
 public class SimpleAuthorRepository implements AuthorRepository {
-    private Author[] authors = {};
+    private Author[] authors = new Author[0];
 
     @Override
     public boolean save(Author author) {
-        if (isAuthorExist(author)) {
+        if (!isAuthorNotExist(author)) {
             return false;
         }
 
@@ -33,13 +33,13 @@ public class SimpleAuthorRepository implements AuthorRepository {
 
     @Override
     public boolean remove(Author author) {
-        if (!isAuthorExist(author)) {
+        if (isAuthorNotExist(author)) {
             return false;
         }
 
         Author[] tempArr = Arrays.stream(authors).filter(theAuthor ->
-                theAuthor.getName().equals(author.getName())
-                        && theAuthor.getLastName().equals(author.getLastName())).toArray(Author[]::new);
+                !theAuthor.getName().equals(author.getName())
+                        || !theAuthor.getLastName().equals(author.getLastName())).toArray(Author[]::new);
         authors = tempArr;
         return true;
     }
@@ -49,7 +49,7 @@ public class SimpleAuthorRepository implements AuthorRepository {
         return authors.length;
     }
 
-    private boolean isAuthorExist(Author author) {
-        return findByFullName(author.getName(), author.getLastName()) != null;
+    private boolean isAuthorNotExist(Author author) {
+        return findByFullName(author.getName(), author.getLastName()) == null;
     }
 }

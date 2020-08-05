@@ -5,7 +5,7 @@ import com.epam.izh.rd.online.entity.SchoolBook;
 import java.util.Arrays;
 
 public class SimpleSchoolBookRepository implements BookRepository<SchoolBook> {
-    private SchoolBook[] schoolBooks = {};
+    private SchoolBook[] schoolBooks = new SchoolBook[0];
 
     @Override
     public boolean save(SchoolBook book) {
@@ -18,7 +18,7 @@ public class SimpleSchoolBookRepository implements BookRepository<SchoolBook> {
     @Override
     public SchoolBook[] findByName(String name) {
         return Arrays.stream(schoolBooks).filter(theSchoolBook ->
-                theSchoolBook.getAuthorName().equals(name))
+                theSchoolBook.getName().equals(name))
                 .toArray(SchoolBook[]::new);
     }
 
@@ -29,7 +29,7 @@ public class SimpleSchoolBookRepository implements BookRepository<SchoolBook> {
         }
 
         SchoolBook[] tempArr = Arrays.stream(schoolBooks)
-                .filter(book -> !book.getAuthorName().equals(name))
+                .filter(book -> !book.getName().equals(name))
                 .toArray(SchoolBook[]::new);
         schoolBooks = tempArr;
 
