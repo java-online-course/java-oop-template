@@ -76,7 +76,6 @@ public class SimpleAuthorRepository implements AuthorRepository {
         if (a) {
             for (int i = flag; i < count; i++) {
                 authors[i] = authors[i + 1];
-                authors[i + 1] = null;
             }
             return true;
         }
