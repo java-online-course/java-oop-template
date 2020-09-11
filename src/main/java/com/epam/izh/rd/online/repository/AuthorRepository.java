@@ -2,6 +2,9 @@ package com.epam.izh.rd.online.repository;
 
 import com.epam.izh.rd.online.entity.Author;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 /**
  * Интерфейс репозитория для хранения данных об авторах.
  * <p>
@@ -57,3 +60,4 @@ public interface AuthorRepository {
      */
     int count();
 }
+
