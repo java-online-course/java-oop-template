@@ -1,7 +1,7 @@
 package com.epam.izh.rd.online.repository;
 
 import com.epam.izh.rd.online.entity.Book;
-
+import com.epam.izh.rd.online.entity.SchoolBook;
 /**
  * Интерфейс репозитория для хранения данных о книгах
  * <p>
