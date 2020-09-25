@@ -5,12 +5,9 @@ import com.epam.izh.rd.online.repository.AuthorRepository;
 
 public class SimpleAuthorService implements AuthorService{
 
-
-
-
     @Override
     public boolean save(Author author) {
-        return false;
+        return true;
     }
 
     @Override
