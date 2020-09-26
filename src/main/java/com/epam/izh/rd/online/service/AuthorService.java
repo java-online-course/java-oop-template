@@ -28,7 +28,7 @@ public interface AuthorService {
      * Метод должен находить автора по имени и фамилии.
      * По факту, он просто обращается к репозиторию с авторами и вызывает аналогичный метод, псоле чего возвращает результат.
      */
-    Author findByFullName(String name, String lastname);
+    Author findByFullName(String name, String lastName);
 
     /**
      * Метод должен удалять автора.
