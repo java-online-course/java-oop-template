@@ -7,24 +7,23 @@ public class SimpleAuthorRepository implements AuthorRepository{
 
     @Override
     public boolean save(Author author) {
-
-        if(author.equals(findByFullName(author.getName(), author.getLastName()))){
+        if(findByFullName(author.getName(), author.getLastName()) != null) {
             return false;
-        }else{
-            int i = 0;
-            authors[i]= new Author();
-            authors[i] = author;
-            i++;
-            return true;
         }
+        Author[] temp = new Author[authors.length + 1];
+        for(int i = 0; i < authors.length; i++) {
+            temp[i] = authors[i];
+        }
+        temp [authors.length] = author;
+        authors = temp;
+        return true;
     }
 
     @Override
     public Author findByFullName(String name, String lastname) {
-
-        for (int i = 0; i < authors.length; i++) {
-            if (name.equals(authors[i].getName()) && lastname.equals(authors[i].getLastName())){
-                return authors[i];
+        for (Author author:authors) {
+            if (author.getName().equals(name) && author.getLastName().equals(lastname)){
+                return author;
             }
         }
         return null;
@@ -32,20 +31,23 @@ public class SimpleAuthorRepository implements AuthorRepository{
 
     @Override
     public boolean remove(Author author) {
-        if(author.equals(findByFullName(author.getName(), author.getLastName()))){
-            author = null;
-            for (int i = 2; i < authors.length-1; i++) {
-                authors[i-1] = authors[i];
-                authors[i] = null;
-
+        if(findByFullName(author.getName(), author.getLastName()) == null) {
+            return false;
+        } else {
+            Author[] temp = new Author[authors.length - 1];
+            int j = 0;
+            for (Author i : authors) {
+                if (i!= findByFullName(author.getName(), author.getLastName())) {
+                    temp[j] = i;
+                    j++;
+                }
             }
+            authors = temp;
             return true;
-        }else return false;
+        }
     }
-
     @Override
     public int count() {
-
-        return 0;
+        return authors.length;
     }
 }
