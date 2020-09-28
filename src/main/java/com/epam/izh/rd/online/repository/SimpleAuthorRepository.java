@@ -7,16 +7,16 @@ public class SimpleAuthorRepository implements AuthorRepository{
 
     @Override
     public boolean save(Author author) {
-        if(findByFullName(author.getName(), author.getLastName()) != null) {
-            return false;
+        if(findByFullName(author.getName(), author.getLastName()) == null) {
+            Author[] temp = new Author[authors.length + 1];
+            for(int i = 0; i < authors.length; i++) {
+                temp[i] = authors[i];
+            }
+            temp [authors.length] = author;
+            authors = temp;
+            return true;
         }
-        Author[] temp = new Author[authors.length + 1];
-        for(int i = 0; i < authors.length; i++) {
-            temp[i] = authors[i];
-        }
-        temp [authors.length] = author;
-        authors = temp;
-        return true;
+        return false;
     }
 
     @Override
@@ -34,12 +34,12 @@ public class SimpleAuthorRepository implements AuthorRepository{
         if(findByFullName(author.getName(), author.getLastName()) == null) {
             return false;
         } else {
+            int i = 0;
             Author[] temp = new Author[authors.length - 1];
-            int j = 0;
-            for (Author i : authors) {
-                if (i!= findByFullName(author.getName(), author.getLastName())) {
-                    temp[j] = i;
-                    j++;
+            for (Author a:authors) {
+                if (a!=findByFullName(author.getName(), author.getLastName())){
+                    temp[i] = a;
+                    i++;
                 }
             }
             authors = temp;

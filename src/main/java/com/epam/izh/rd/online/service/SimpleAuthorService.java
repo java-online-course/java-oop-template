@@ -17,12 +17,13 @@ public class SimpleAuthorService implements AuthorService{
 
     @Override
     public boolean remove(Author author) {
-        authorRepository.remove(author);
-        return false;
+        return authorRepository.remove(author);
+
     }
 
     @Override
     public int count() {
+
         return authorRepository.count();
     }
 
