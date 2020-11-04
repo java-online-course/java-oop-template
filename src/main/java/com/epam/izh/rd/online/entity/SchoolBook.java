@@ -5,7 +5,7 @@ import java.util.Objects;
 
 /**
  * Сущность учебника. Он должен быть унаследован от сущности Book
- *
+ * <p>
  * Необходимо:
  * 1) Унаследовать данный класс от класса Book
  * 2) Создать список полей с указанными типами ровно в этом порядке:
@@ -20,5 +20,66 @@ import java.util.Objects;
  * 6) Переопределить метод toString с выводом всех полей (не забывайте alt+inset)
  */
 public class SchoolBook extends Book {
+    private String authorName;
+    private String authorLastName;
+    private LocalDate publishDate;
 
+    public SchoolBook() {
+    }
+
+    public SchoolBook(int numberOfpage, String name, String authorName, String authorlastName, LocalDate publishDate) {
+        super(numberOfpage, name);
+        this.authorName = authorName;
+        this.authorLastName = authorlastName;
+        this.publishDate = publishDate;
+    }
+
+    public String getAuthorName() {
+        return authorName;
+    }
+
+    public String getAuthorLastName() {
+        return authorLastName;
+    }
+
+    public LocalDate getPublishDate() {
+        return publishDate;
+    }
+
+    public void setAuthorName(String authorName) {
+        this.authorName = authorName;
+    }
+
+    public void setAuthorLastName(String authorLastName) {
+        this.authorLastName = authorLastName;
+    }
+
+    public void setPublishDate(LocalDate publishDate) {
+        this.publishDate = publishDate;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(authorName, authorLastName, publishDate);
+    }
+
+    @Override
+    public String toString() {
+        return "SchoolBook{" +
+                "authorName='" + authorName + '\'' +
+                ", authorLastName='" + authorLastName + '\'' +
+                ", publishDate=" + publishDate +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        SchoolBook that = (SchoolBook) o;
+        return authorName.equals(that.authorName) &&
+                authorLastName.equals(that.authorLastName) &&
+                publishDate.equals(that.publishDate);
+    }
 }
