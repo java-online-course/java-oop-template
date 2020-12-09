@@ -1,6 +1,7 @@
 package com.epam.izh.rd.online.repository;
 
 import com.epam.izh.rd.online.entity.Book;
+import com.epam.izh.rd.online.entity.SchoolBook;
 
 /**
  * Интерфейс репозитория для хранения данных о книгах
@@ -51,4 +52,6 @@ public interface BookRepository<T extends Book> {
      * Метод возвращает количество сохраненных сущностей в массиве schoolBooks.
      */
     int count();
+
+
 }
