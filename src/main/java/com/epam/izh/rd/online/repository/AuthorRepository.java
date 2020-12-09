@@ -35,6 +35,7 @@ public interface AuthorRepository {
      * Метод должен находить в массиве authors автора по имени и фамилии (считаем, что двух авторов
      * с одинаковыми именем и фамилией быть не может.)
      * <p>
+     *
      * Если автор с таким именем и фамилией найден - возвращаем его, если же не найден, метод должен вернуть null.
      */
     Author findByFullName(String name, String lastname);
@@ -51,7 +52,6 @@ public interface AuthorRepository {
      * должен вернуть false.
      */
     boolean remove(Author author);
-
     /**
      * Метод возвращает количество сохраненных сущностей в массиве authors.
      */
