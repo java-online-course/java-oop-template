@@ -28,6 +28,13 @@ public class Author {
     public Author() {
     }
 
+    public Author(Author author) {
+        this.name = author.name;
+        this.lastName = author.lastName;
+        this.birthdate = author.birthdate;
+        this.country = author.country;
+    }
+
     public Author(String name, String lastName, LocalDate birthdate, String country) {
         this.name = name;
         this.lastName = lastName;

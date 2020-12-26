@@ -28,6 +28,13 @@ public class SchoolBook extends Book {
     public SchoolBook() {
     }
 
+    public SchoolBook(SchoolBook schoolBook) {
+        super(schoolBook.getNumberOfPages(), schoolBook.getName());
+        this.authorName = schoolBook.getAuthorName();
+        this.authorLastName = schoolBook.getAuthorLastName();
+        this.publishDate = schoolBook.getPublishDate();
+    }
+
     public SchoolBook(String authorName, String authorLastName, LocalDate publishDate) {
         this.authorName = authorName;
         this.authorLastName = authorLastName;
