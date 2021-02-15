@@ -4,7 +4,7 @@ import com.epam.izh.rd.online.entity.Author;
 
 public class SimpleAuthorRepository implements AuthorRepository {
 
-    private Author[] authors = new Author[1];
+    private Author[] authors = new Author[0];
 
     /**
      * Метод должен сохранять автора в массив authors.
@@ -60,12 +60,13 @@ public class SimpleAuthorRepository implements AuthorRepository {
      */
     @Override
     public boolean remove(Author author) {
-        for (int i = 0; i < authors.length; i++) {
-            if (author.equals(authors)) {
-                //  authors[i] = null;
+        for (int i = authors.length - 1; i >= 0; i--) {
+            if (author.equals(authors[i])) {
                 Author[] author2 = new Author[authors.length - 1];
-                java.lang.System.arraycopy(authors, 0, author2, 0, authors.length - i);
-                java.lang.System.arraycopy(author, i + 1, author2, i, authors.length - (authors.length - i + 1));
+                java.lang.System.arraycopy(authors, 0, author2, 0, authors.length - 1);
+                if (i != authors.length - 1)
+                    java.lang.System.arraycopy(authors, i + 1, author2, i, authors.length - (authors.length - (i + 1)));
+                this.authors = author2;
                 return true;
             }
         }
