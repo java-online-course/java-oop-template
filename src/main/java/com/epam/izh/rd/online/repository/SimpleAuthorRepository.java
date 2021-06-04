@@ -14,11 +14,9 @@ public class SimpleAuthorRepository implements AuthorRepository {
         if (findByFullName(author.getName(), author.getLastName()) != null) {
             return false;
         }
-        Author[] tempArrayAuthor;
         int lengthArray = count();
-        tempArrayAuthor = Arrays.copyOf(authors, lengthArray + 1);
-        tempArrayAuthor[lengthArray + 1] = author;
-        authors = Arrays.copyOf(tempArrayAuthor, lengthArray + 1);
+        authors = Arrays.copyOf(authors, lengthArray + 1);
+        authors[lengthArray] = author;
         return true;
     }
 
@@ -34,12 +32,9 @@ public class SimpleAuthorRepository implements AuthorRepository {
 
     @Override
     public boolean remove(Author author) {
-//        if (findByFullName(author.getName(), author.getLastName()) == null) {
-//
-//        }
         for (int i = 0; i < count(); i++) {
             if (authors[i].getName().equals(author.getName()) && authors[i].getLastName().equals(author.getLastName())) {
-                authors = ArrayUtils.removeElement(authors, i);
+                authors = ArrayUtils.remove(authors, i);
                 return true;
             }
         }

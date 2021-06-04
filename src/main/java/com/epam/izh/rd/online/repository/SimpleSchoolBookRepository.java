@@ -10,11 +10,9 @@ public class SimpleSchoolBookRepository implements BookRepository<SchoolBook> {
 
     @Override
     public boolean save(SchoolBook book) {
-        SchoolBook[] tempArrayBook;
         int lengthArray = count();
-        tempArrayBook = Arrays.copyOf(schoolBooks, lengthArray + 1);
-        tempArrayBook[lengthArray + 1] = book;
-        schoolBooks = Arrays.copyOf(tempArrayBook, lengthArray + 1);
+        schoolBooks = Arrays.copyOf(schoolBooks, lengthArray + 1);
+        schoolBooks[lengthArray] = book;
         return true;
     }
 
