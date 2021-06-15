@@ -18,6 +18,82 @@ import java.util.Objects;
  * 5) Переопределить методы equals и hashCode - используйте генерацию (не забывайте alt+inset)
  * 6) Переопределить метод toString с выводом всех полей (не забывайте alt+inset)
  */
+@SuppressWarnings("unused")
 public class Author {
+  private String name;
+  private String lastName;
+  private LocalDate birthdate;
+  private String country;
 
+  public Author() {
+  }
+
+  public Author(String name, String lastName, LocalDate birthDate, String country) {
+    this.name = name;
+    this.lastName = lastName;
+    this.birthdate = birthDate;
+    this.country = country;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public String getLastName() {
+    return lastName;
+  }
+
+  public LocalDate getBirthdate() {
+    return birthdate;
+  }
+
+  public String getCountry() {
+    return country;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public void setLastName(String lastName) {
+    this.lastName = lastName;
+  }
+
+  public void setBirthdate(LocalDate birthDate) {
+    this.birthdate = birthDate;
+  }
+
+  public void setCountry(String country) {
+    this.country = country;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Author author = (Author) o;
+    return Objects.equals(name, author.name) &&
+        Objects.equals(lastName, author.lastName) &&
+        Objects.equals(birthdate, author.birthdate) &&
+        Objects.equals(country, author.country);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(name, lastName, birthdate, country);
+  }
+
+  @Override
+  public String toString() {
+    return "Author{" +
+        "name='" + name + '\'' +
+        ", lastName='" + lastName + '\'' +
+        ", birthDate=" + birthdate +
+        ", country='" + country + '\'' +
+        '}';
+  }
 }
