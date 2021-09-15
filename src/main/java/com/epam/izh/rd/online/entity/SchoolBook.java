@@ -5,7 +5,7 @@ import java.util.Objects;
 
 /**
  * Сущность учебника. Он должен быть унаследован от сущности Book
- *
+ * <p>
  * Необходимо:
  * 1) Унаследовать данный класс от класса Book
  * 2) Создать список полей с указанными типами ровно в этом порядке:
@@ -20,5 +20,69 @@ import java.util.Objects;
  * 6) Переопределить метод toString с выводом всех полей (не забывайте alt+inset)
  */
 public class SchoolBook extends Book {
+	private String authorName;
+	private String authorLastName;
+	private LocalDate publishDate;
 
+	public SchoolBook() {
+	}
+
+	public SchoolBook(String authorName, String authorLastName, LocalDate publishDate) {
+		this.authorName = authorName;
+		this.authorLastName = authorLastName;
+		this.publishDate = publishDate;
+	}
+
+	public SchoolBook(int numberOfPages, String name, String authorName, String authorLastName, LocalDate publishDate) {
+		super(numberOfPages, name);
+		this.authorName = authorName;
+		this.authorLastName = authorLastName;
+		this.publishDate = publishDate;
+	}
+
+	public String getAuthorName() {
+		return this.authorName;
+	}
+
+	public void setAuthorName(String authorName) {
+		this.authorName = authorName;
+	}
+
+	public String getAuthorLastName() {
+		return this.authorLastName;
+	}
+
+	public void setAuthorLastName(String authorLastName) {
+		this.authorLastName = authorLastName;
+	}
+
+	public LocalDate getPublishDate() {
+		return this.publishDate;
+	}
+
+	public void setPublishDate(LocalDate publishDate) {
+		this.publishDate = publishDate;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || this.getClass() != o.getClass()) return false;
+		if (!super.equals(o)) return false;
+		SchoolBook that = (SchoolBook) o;
+		return Objects.equals(this.getAuthorName(), that.getAuthorName()) &&
+				Objects.equals(this.getAuthorLastName(), that.getAuthorLastName()) &&
+				Objects.equals(this.getPublishDate(), that.getPublishDate());
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(super.hashCode(), this.getAuthorName(), this.getAuthorLastName(), this.getPublishDate());
+	}
+
+	@Override
+	public String toString() {
+		return String.format("SchoolBook{authorName= %s, authorLastName= %s, publishDate= %s}",
+				this.getAuthorName(), this.getAuthorLastName(), this.getPublishDate());
+	}
 }
