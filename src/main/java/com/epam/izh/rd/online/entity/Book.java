@@ -20,7 +20,6 @@ public abstract class Book {
 	private String name;
 
 	public Book() {
-		super();
 	}
 
 	public Book(int numberOfPages, String name) {
@@ -29,7 +28,7 @@ public abstract class Book {
 	}
 
 	public int getNumberOfPages() {
-		return numberOfPages;
+		return this.numberOfPages;
 	}
 
 	public void setNumberOfPages(int numberOfPages) {
@@ -37,7 +36,7 @@ public abstract class Book {
 	}
 
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	public void setName(String name) {
@@ -47,21 +46,18 @@ public abstract class Book {
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if (o == null || this.getClass() != o.getClass()) return false;
 		Book book = (Book) o;
-		return numberOfPages == book.numberOfPages && name.equals(book.name);
+		return this.getNumberOfPages() == book.getNumberOfPages() && Objects.equals(this.getName(), book.getName());
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(numberOfPages, name);
+		return Objects.hash(this.getNumberOfPages(), this.getName());
 	}
 
 	@Override
 	public String toString() {
-		return "Book{" +
-				"numberOfPages=" + numberOfPages +
-				", name='" + name + '\'' +
-				'}';
+		return String.format("Book{numberOfPages= %s,name= %s}", this.getNumberOfPages(), this.getName());
 	}
 }

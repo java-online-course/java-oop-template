@@ -25,7 +25,6 @@ public class Author {
 	private String country;
 
 	public Author() {
-		super();
 	}
 
 	public Author(String name, String lastName, LocalDate birthdate, String country) {
@@ -36,7 +35,7 @@ public class Author {
 	}
 
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	public void setName(String name) {
@@ -44,7 +43,7 @@ public class Author {
 	}
 
 	public String getLastName() {
-		return lastName;
+		return this.lastName;
 	}
 
 	public void setLastName(String lastName) {
@@ -52,7 +51,7 @@ public class Author {
 	}
 
 	public LocalDate getBirthdate() {
-		return birthdate;
+		return this.birthdate;
 	}
 
 	public void setBirthdate(LocalDate birthdate) {
@@ -60,7 +59,7 @@ public class Author {
 	}
 
 	public String getCountry() {
-		return country;
+		return this.country;
 	}
 
 	public void setCountry(String country) {
@@ -70,13 +69,22 @@ public class Author {
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if (o == null || this.getClass() != o.getClass()) return false;
 		Author author = (Author) o;
-		return name.equals(author.name) && Objects.equals(lastName, author.lastName) && birthdate.equals(author.birthdate) && country.equals(author.country);
+		return Objects.equals(this.getName(), author.getName()) &&
+				Objects.equals(this.getLastName(), author.getLastName()) &&
+				Objects.equals(this.getBirthdate(), author.getBirthdate()) &&
+				Objects.equals(this.getCountry(), author.getCountry());
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(name, lastName, birthdate, country);
+		return Objects.hash(this.getName(), this.getLastName(), this.getBirthdate(), this.getCountry());
+	}
+
+	@Override
+	public String toString() {
+		return String.format("Author{name= %s, lastName= %s, birthdate= %s, country= %s}",
+				this.getName(), this.getLastName(), this.getBirthdate(), this.getCountry());
 	}
 }

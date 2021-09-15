@@ -4,14 +4,13 @@ import com.epam.izh.rd.online.entity.SchoolBook;
 
 public class SimpleSchoolBookRepository implements BookRepository<SchoolBook> {
 	private SchoolBook[] schoolBooks = new SchoolBook[0];
-	private int numOfBooks = 0;
 
 	@Override
 	public boolean save(SchoolBook book) {
-		SchoolBook[] updateBooks = new SchoolBook[this.numOfBooks + 1];
-		System.arraycopy(this.schoolBooks, 0, updateBooks, 0, this.numOfBooks);
-		updateBooks[this.numOfBooks] = book;
-		this.numOfBooks = this.numOfBooks + 1;
+		int numOfBooks = this.schoolBooks.length;
+		SchoolBook[] updateBooks = new SchoolBook[numOfBooks + 1];
+		System.arraycopy(this.schoolBooks, 0, updateBooks, 0, numOfBooks);
+		updateBooks[numOfBooks] = book;
 		this.schoolBooks = updateBooks;
 		return true;
 	}
@@ -31,9 +30,10 @@ public class SimpleSchoolBookRepository implements BookRepository<SchoolBook> {
 	}
 
 	private int[] findByNameGetIndexes(String name) {
-		int[] indexes = new int[this.numOfBooks];
+		int numOfBooks = this.schoolBooks.length;
+		int[] indexes = new int[numOfBooks];
 		int j = 0;
-		for (int i = 0; i < this.numOfBooks; i++) {
+		for (int i = 0; i < numOfBooks; i++) {
 			if (this.schoolBooks[i].getName().equals(name)) {
 				indexes[j] = i;
 				j++;
@@ -49,13 +49,14 @@ public class SimpleSchoolBookRepository implements BookRepository<SchoolBook> {
 
 	@Override
 	public boolean removeByName(String name) {
-		if (this.numOfBooks > 0) {
+		int numOfBooks = this.schoolBooks.length;
+		if (numOfBooks > 0) {
 			int[] indexes = findByNameGetIndexes(name);
 			int indexesLen = indexes.length;
 			if (indexesLen > 0) {
-				SchoolBook[] arrayOfBooks = new SchoolBook[this.numOfBooks - indexesLen];
+				SchoolBook[] arrayOfBooks = new SchoolBook[numOfBooks - indexesLen];
 				boolean flag;
-				for (int i = 0, j = 0, k = 0; i < this.numOfBooks; i++) {
+				for (int i = 0, j = 0, k = 0; i < numOfBooks; i++) {
 					flag = true;
 					if (k < indexesLen)
 						if (i == indexes[k]) {
@@ -67,7 +68,6 @@ public class SimpleSchoolBookRepository implements BookRepository<SchoolBook> {
 						j++;
 					}
 				}
-				this.numOfBooks = this.numOfBooks - indexesLen;
 				this.schoolBooks = arrayOfBooks;
 				return true;
 			}
@@ -77,6 +77,6 @@ public class SimpleSchoolBookRepository implements BookRepository<SchoolBook> {
 
 	@Override
 	public int count() {
-		return this.numOfBooks;
+		return this.schoolBooks.length;
 	}
 }

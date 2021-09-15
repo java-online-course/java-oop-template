@@ -25,7 +25,6 @@ public class SchoolBook extends Book {
 	private LocalDate publishDate;
 
 	public SchoolBook() {
-		super();
 	}
 
 	public SchoolBook(String authorName, String authorLastName, LocalDate publishDate) {
@@ -42,7 +41,7 @@ public class SchoolBook extends Book {
 	}
 
 	public String getAuthorName() {
-		return authorName;
+		return this.authorName;
 	}
 
 	public void setAuthorName(String authorName) {
@@ -50,7 +49,7 @@ public class SchoolBook extends Book {
 	}
 
 	public String getAuthorLastName() {
-		return authorLastName;
+		return this.authorLastName;
 	}
 
 	public void setAuthorLastName(String authorLastName) {
@@ -58,7 +57,7 @@ public class SchoolBook extends Book {
 	}
 
 	public LocalDate getPublishDate() {
-		return publishDate;
+		return this.publishDate;
 	}
 
 	public void setPublishDate(LocalDate publishDate) {
@@ -68,23 +67,22 @@ public class SchoolBook extends Book {
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if (o == null || this.getClass() != o.getClass()) return false;
 		if (!super.equals(o)) return false;
 		SchoolBook that = (SchoolBook) o;
-		return authorName.equals(that.authorName) && Objects.equals(authorLastName, that.authorLastName) && publishDate.equals(that.publishDate);
+		return Objects.equals(this.getAuthorName(), that.getAuthorName()) &&
+				Objects.equals(this.getAuthorLastName(), that.getAuthorLastName()) &&
+				Objects.equals(this.getPublishDate(), that.getPublishDate());
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(super.hashCode(), authorName, authorLastName, publishDate);
+		return Objects.hash(super.hashCode(), this.getAuthorName(), this.getAuthorLastName(), this.getPublishDate());
 	}
 
 	@Override
 	public String toString() {
-		return "SchoolBook{" +
-				"authorName='" + authorName + '\'' +
-				", authorLastName='" + authorLastName + '\'' +
-				", publishDate=" + publishDate +
-				'}';
+		return String.format("SchoolBook{authorName= %s, authorLastName= %s, publishDate= %s}",
+				this.getAuthorName(), this.getAuthorLastName(), this.getPublishDate());
 	}
 }
