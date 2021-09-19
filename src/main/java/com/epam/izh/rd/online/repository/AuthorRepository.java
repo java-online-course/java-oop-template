@@ -15,6 +15,7 @@ import com.epam.izh.rd.online.entity.Author;
  */
 public interface AuthorRepository {
 
+
     /**
      * Метод должен сохранять автора в массив authors.
      * Массив при каждом сохранении должен увеличиваться в размере ровно на 1.
@@ -28,8 +29,10 @@ public interface AuthorRepository {
      * Подсказка - можно использовать для проверки метод findByFullName.
      * <p>
      * Если сохранение прошло успешно, метод должен вернуть true.
+     * @return
      */
     boolean save(Author author);
+
 
     /**
      * Метод должен находить в массиве authors автора по имени и фамилии (считаем, что двух авторов
