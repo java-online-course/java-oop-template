@@ -28,7 +28,7 @@ public class SimpleAuthorRepository implements AuthorRepository {
         if (findByFullName(author.getName(), author.getLastName()) == author) {
             return false;
         }
-        authors = Arrays.copyOf(authors, authors.length * 2);
+        authors = Arrays.copyOf(authors, count + 1);
         authors[count++] = author;
         return true;
     }
@@ -65,7 +65,7 @@ public class SimpleAuthorRepository implements AuthorRepository {
      */
     @Override
     public boolean remove(Author author) {
-        if (findByFullName(author.getName(), author.getLastName()) == author) {
+        if (findByFullName(author.getName(), author.getLastName()) != author) {
             return false;
         }
 
