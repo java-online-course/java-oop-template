@@ -72,7 +72,8 @@ public class SchoolBook extends Book {
 
     @Override
     public int hashCode() {
-        int result = authorName != null ? authorName.hashCode() : 0;
+        int result = super.hashCode();
+        result = 31 * result + (authorName != null ? authorName.hashCode() : 0);
         result = 31 * result + (authorLastName != null ? authorLastName.hashCode() : 0);
         result = 31 * result + (publishDate != null ? publishDate.hashCode() : 0);
         return result;
