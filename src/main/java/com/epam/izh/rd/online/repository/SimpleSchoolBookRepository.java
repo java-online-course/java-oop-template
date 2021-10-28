@@ -4,7 +4,7 @@ import com.epam.izh.rd.online.entity.Author;
 import com.epam.izh.rd.online.entity.Book;
 import com.epam.izh.rd.online.entity.SchoolBook;
 
-public class SimpleSchoolBookRepository implements BookRepository {
+public class SimpleSchoolBookRepository implements BookRepository<SchoolBook> {
     private SchoolBook[] schoolBooks = {};
     private int count = 0;
 
@@ -19,7 +19,7 @@ public class SimpleSchoolBookRepository implements BookRepository {
      *
      */
     @Override
-    public boolean save(Book book) {
+    public boolean save(SchoolBook book) {
         SchoolBook[] temp = schoolBooks;
         schoolBooks = new SchoolBook[count + 1];
 
@@ -27,7 +27,7 @@ public class SimpleSchoolBookRepository implements BookRepository {
             schoolBooks[i] = temp[i];
         }
 
-        schoolBooks[count++] = (SchoolBook) book;
+        schoolBooks[count++] =  book;
         return true;
     }
 

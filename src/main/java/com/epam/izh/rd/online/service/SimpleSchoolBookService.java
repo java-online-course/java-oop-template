@@ -5,7 +5,7 @@ import com.epam.izh.rd.online.entity.Book;
 import com.epam.izh.rd.online.entity.SchoolBook;
 import com.epam.izh.rd.online.repository.BookRepository;
 
-public class SimpleSchoolBookService implements BookService {
+public class SimpleSchoolBookService implements BookService<SchoolBook> {
     private BookRepository<SchoolBook> schoolBookBookRepository;
     private AuthorService authorService;
 
