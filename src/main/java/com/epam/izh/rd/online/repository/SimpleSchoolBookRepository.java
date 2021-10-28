@@ -2,8 +2,11 @@ package com.epam.izh.rd.online.repository;
 
 import com.epam.izh.rd.online.entity.Author;
 import com.epam.izh.rd.online.entity.Book;
+import com.epam.izh.rd.online.entity.SchoolBook;
 
 public class SimpleSchoolBookRepository implements BookRepository {
+    private SchoolBook[] schoolBooks = {};
+    private int count = 0;
 
     /**
      * Метод должен сохранять школьную книгу в массив schoolBooks.
@@ -14,11 +17,18 @@ public class SimpleSchoolBookRepository implements BookRepository {
      * <p>
      * Если сохранение прошло успешно, метод должен вернуть true.
      *
-     * @param book
      */
     @Override
     public boolean save(Book book) {
-        return false;
+        SchoolBook[] temp = schoolBooks;
+        schoolBooks = new SchoolBook[count + 1];
+
+        for (int i = 0; i < count; i++) {
+            schoolBooks[i] = temp[i];
+        }
+
+        schoolBooks[count++] = (SchoolBook) book;
+        return true;
     }
 
     /**
@@ -27,11 +37,31 @@ public class SimpleSchoolBookRepository implements BookRepository {
      * Если книги найдены - метод должен их вернуть.
      * Если найденных по имени книг нет, должен вернуться пустой массив.
      *
-     * @param name
      */
     @Override
-    public Book[] findByName(String name) {
-        return new Book[0];
+    public SchoolBook[] findByName(String name) {
+        SchoolBook[] newArray = {};
+        int countOfMatch = 0;
+
+        for (SchoolBook book : schoolBooks) {
+            if (book.getName().equals(name)) {
+                countOfMatch++;
+            }
+        }
+
+        if (countOfMatch == 0) {
+            return newArray;
+        }
+
+        SchoolBook[] temp = new SchoolBook[countOfMatch];
+
+        int k = 0;
+        for (int i = 0; i < count; i++) {
+            if (schoolBooks[i].getName().equals(name)) {
+                temp[k++] = schoolBooks[i];
+            }
+        }
+        return temp;
     }
 
     /**
@@ -45,11 +75,32 @@ public class SimpleSchoolBookRepository implements BookRepository {
      * Если хотя бы одна книга была найдена и удалена, метод должен вернуть true, в противном случае,
      * если книга не была найдена, метод должен вернуть false.
      *
-     * @param name
      */
     @Override
     public boolean removeByName(String name) {
-        return false;
+        int countOfMatch = 0;
+
+        for (SchoolBook book : schoolBooks) {
+            if (book.getName().equals(name)) {
+                countOfMatch++;
+            }
+        }
+
+        if (countOfMatch == 0) {
+            return false;
+        }
+
+        SchoolBook[] temp = new SchoolBook[count - countOfMatch];
+
+        int k = 0;
+        for (int i = 0; i < count; i++) {
+            if (!schoolBooks[i].getName().equals(name)) {
+                temp[k++] = schoolBooks[i];
+            }
+        }
+        schoolBooks = temp;
+        count = schoolBooks.length;
+        return true;
     }
 
     /**
@@ -57,6 +108,6 @@ public class SimpleSchoolBookRepository implements BookRepository {
      */
     @Override
     public int count() {
-        return 0;
+        return count;
     }
 }

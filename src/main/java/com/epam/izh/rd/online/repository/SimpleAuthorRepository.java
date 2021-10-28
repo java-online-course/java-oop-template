@@ -23,7 +23,6 @@ public class SimpleAuthorRepository implements  AuthorRepository{
      * <p>
      * Если сохранение прошло успешно, метод должен вернуть true.
      *
-     * @param author
      */
     @Override
     public boolean save(Author author) {
@@ -41,8 +40,6 @@ public class SimpleAuthorRepository implements  AuthorRepository{
      * <p>
      * Если автор с таким именем и фамилией найден - возвращаем его, если же не найден, метод должен вернуть null.
      *
-     * @param name
-     * @param lastname
      */
     @Override
     public Author findByFullName(String name, String lastname) {
@@ -68,7 +65,6 @@ public class SimpleAuthorRepository implements  AuthorRepository{
      * Если автор был найден и удален, метод должен вернуть true, в противном случае, если автор не был найден, метод
      * должен вернуть false.
      *
-     * @param author
      */
     @Override
     public boolean remove(Author author) {
