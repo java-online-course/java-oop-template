@@ -64,12 +64,18 @@ public class SchoolBook extends Book {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         SchoolBook that = (SchoolBook) o;
-        return Objects.equals(authorName, that.authorName) && Objects.equals(authorLastName, that.authorLastName) && Objects.equals(publishDate, that.publishDate);
+
+        if (authorName != null ? !authorName.equals(that.authorName) : that.authorName != null) return false;
+        if (authorLastName != null ? !authorLastName.equals(that.authorLastName) : that.authorLastName != null) return false;
+        return publishDate != null ?  publishDate.equals(that.publishDate) : that.publishDate == null;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), authorName, authorLastName, publishDate);
+        int result = authorName != null ? authorName.hashCode() : 0;
+        result = 31 * result + (authorLastName != null ? authorLastName.hashCode() : 0);
+        result = 31 * result + (publishDate != null ? publishDate.hashCode() : 0);
+        return result;
     }
 
     @Override

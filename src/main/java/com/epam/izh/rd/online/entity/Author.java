@@ -72,9 +72,9 @@ public class Author {
         if (o == null || getClass() != o.getClass()) return false;
         Author author = (Author) o;
         if (name != null ? !name.equals(author.name) : author.name != null) return false;
-        if (lastName != null ? lastName.equals(author.lastName) : author.lastName == null) return false;
-        if (birthdate != null ? birthdate.equals(author.birthdate) : author.birthdate == null) return false;
-        return country != null ? !country.equals(author.country) : author.country == null;
+        if (lastName != null ? !lastName.equals(author.lastName) : author.lastName != null) return false;
+        if (birthdate != null ? !birthdate.equals(author.birthdate) : author.birthdate != null) return false;
+        return country != null ? country.equals(author.country) : author.country == null;
     }
 
     @Override

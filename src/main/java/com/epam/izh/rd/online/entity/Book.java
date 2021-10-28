@@ -49,7 +49,7 @@ public abstract class Book {
         if (o == null || getClass() != o.getClass()) return false;
         Book book = (Book) o;
         if (numberOfPages != book.numberOfPages) return false;
-        return name.equals(book.name);
+        return name != null ? name.equals(book.name) : book.name == null;
     }
 
     @Override
