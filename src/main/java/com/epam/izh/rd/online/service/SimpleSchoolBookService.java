@@ -1,7 +1,6 @@
 package com.epam.izh.rd.online.service;
 
 import com.epam.izh.rd.online.entity.Author;
-import com.epam.izh.rd.online.entity.Book;
 import com.epam.izh.rd.online.entity.SchoolBook;
 import com.epam.izh.rd.online.repository.BookRepository;
 
@@ -28,42 +27,46 @@ public class SimpleSchoolBookService implements BookService<SchoolBook> {
      * Если же такого автора в базе нет, значит книгу сохранять нельзя.
      * <p>
      * Соответственно, если книга была успешно сохранена - метод возвращает true, если же книга не была сохранена - метод возвращает false.
-     *
      */
     @Override
     public boolean save(SchoolBook book) {
-        String authorName;
+        String authorName = book.getAuthorName();
+        String authorLastName = book.getAuthorLastName();
+
+        if (authorService.findByFullName(authorName, authorLastName) == null) {
+            return false;
+        }
+
+        schoolBookBookRepository.save(book);
+        return true;
     }
 
     /**
      * Метод должен находить книгу по имени.
      * <p>
      * По факту, он просто обращается к репозиторию с книгами и вызывает аналогичный метод, псоле чего возвращает результат.
-     *
      */
     @Override
-    public Book[] findByName(String name) {
-        return new Book[0];
+    public SchoolBook[] findByName(String name) {
+        return schoolBookBookRepository.findByName(name);
     }
 
     /**
      * Метод должен находить количество сохраненных книг по конкретному имени книги.
-     *
      */
     @Override
     public int getNumberOfBooksByName(String name) {
-        return 0;
+        return schoolBookBookRepository.findByName(name).length;
     }
 
     /**
      * Метод должен удалять все книги по имени.
      * <p>
      * По факту, он просто обращается к репозиторию с книгами и вызывает аналогичный метод, псоле чего возвращает результат.
-     *
      */
     @Override
     public boolean removeByName(String name) {
-        return false;
+        return schoolBookBookRepository.removeByName(name);
     }
 
     /**
@@ -73,7 +76,7 @@ public class SimpleSchoolBookService implements BookService<SchoolBook> {
      */
     @Override
     public int count() {
-        return 0;
+        return schoolBookBookRepository.count();
     }
 
     /**
@@ -82,10 +85,18 @@ public class SimpleSchoolBookService implements BookService<SchoolBook> {
      * То есть приждется сходить и в репозиторий с книгами и в сервис авторов.
      * <p>
      * Если такой книги не найдено, метод должен вернуть null.
-     *
      */
     @Override
     public Author findAuthorByBookName(String name) {
-        return null;
+        SchoolBook[] book = schoolBookBookRepository.findByName(name);
+
+        if (book.length == 0) {
+            return null;
+        }
+
+        String authorName = book[0].getAuthorName();
+        String authorLastName = book[0].getAuthorLastName();
+
+        return authorService.findByFullName(authorName, authorLastName);
     }
 }

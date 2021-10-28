@@ -3,7 +3,7 @@ package com.epam.izh.rd.online.service;
 import com.epam.izh.rd.online.entity.Author;
 import com.epam.izh.rd.online.repository.AuthorRepository;
 
-public class SimpleAuthorService implements AuthorService{
+public class SimpleAuthorService implements AuthorService {
     private AuthorRepository authorRepository;
 
     public SimpleAuthorService() {
@@ -25,7 +25,6 @@ public class SimpleAuthorService implements AuthorService{
     /**
      * Метод должен находить автора по имени и фамилии.
      * По факту, он просто обращается к репозиторию с авторами и вызывает аналогичный метод, псоле чего возвращает результат.
-     *
      */
     @Override
     public Author findByFullName(String name, String lastname) {
@@ -35,7 +34,6 @@ public class SimpleAuthorService implements AuthorService{
     /**
      * Метод должен удалять автора.
      * По факту, он просто обращается к репозиторию с авторами и вызывает аналогичный метод, псоле чего возвращает результат..
-     *
      */
     @Override
     public boolean remove(Author author) {

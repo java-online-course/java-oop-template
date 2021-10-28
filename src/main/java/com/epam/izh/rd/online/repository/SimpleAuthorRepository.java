@@ -5,7 +5,7 @@ import com.epam.izh.rd.online.entity.Author;
 import java.util.Arrays;
 
 
-public class SimpleAuthorRepository implements  AuthorRepository{
+public class SimpleAuthorRepository implements AuthorRepository {
     private Author[] authors = new Author[]{};
     private int count = 0;
 
@@ -22,7 +22,6 @@ public class SimpleAuthorRepository implements  AuthorRepository{
      * Подсказка - можно использовать для проверки метод findByFullName.
      * <p>
      * Если сохранение прошло успешно, метод должен вернуть true.
-     *
      */
     @Override
     public boolean save(Author author) {
@@ -39,7 +38,6 @@ public class SimpleAuthorRepository implements  AuthorRepository{
      * с одинаковыми именем и фамилией быть не может.)
      * <p>
      * Если автор с таким именем и фамилией найден - возвращаем его, если же не найден, метод должен вернуть null.
-     *
      */
     @Override
     public Author findByFullName(String name, String lastname) {
@@ -64,7 +62,6 @@ public class SimpleAuthorRepository implements  AuthorRepository{
      * <p>
      * Если автор был найден и удален, метод должен вернуть true, в противном случае, если автор не был найден, метод
      * должен вернуть false.
-     *
      */
     @Override
     public boolean remove(Author author) {

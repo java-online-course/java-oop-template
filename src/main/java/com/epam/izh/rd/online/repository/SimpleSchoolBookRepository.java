@@ -1,7 +1,5 @@
 package com.epam.izh.rd.online.repository;
 
-import com.epam.izh.rd.online.entity.Author;
-import com.epam.izh.rd.online.entity.Book;
 import com.epam.izh.rd.online.entity.SchoolBook;
 
 public class SimpleSchoolBookRepository implements BookRepository<SchoolBook> {
@@ -16,7 +14,6 @@ public class SimpleSchoolBookRepository implements BookRepository<SchoolBook> {
      * Одну и ту же книгу МОЖНО сохранить в массиве несколько раз, проверки на то, что такая книга уже сохранена, делать не нужно.
      * <p>
      * Если сохранение прошло успешно, метод должен вернуть true.
-     *
      */
     @Override
     public boolean save(SchoolBook book) {
@@ -27,7 +24,7 @@ public class SimpleSchoolBookRepository implements BookRepository<SchoolBook> {
             schoolBooks[i] = temp[i];
         }
 
-        schoolBooks[count++] =  book;
+        schoolBooks[count++] = book;
         return true;
     }
 
@@ -36,7 +33,6 @@ public class SimpleSchoolBookRepository implements BookRepository<SchoolBook> {
      * <p>
      * Если книги найдены - метод должен их вернуть.
      * Если найденных по имени книг нет, должен вернуться пустой массив.
-     *
      */
     @Override
     public SchoolBook[] findByName(String name) {
@@ -74,7 +70,6 @@ public class SimpleSchoolBookRepository implements BookRepository<SchoolBook> {
      * <p>
      * Если хотя бы одна книга была найдена и удалена, метод должен вернуть true, в противном случае,
      * если книга не была найдена, метод должен вернуть false.
-     *
      */
     @Override
     public boolean removeByName(String name) {
