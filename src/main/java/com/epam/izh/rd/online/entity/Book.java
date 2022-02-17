@@ -17,4 +17,51 @@ import java.util.Objects;
  */
 public abstract class Book {
 
+    private int numberOfPages;
+    private String name;
+
+    public Book() {
+    }
+
+    public Book(int numberOfPages, String name) {
+        this.numberOfPages = numberOfPages;
+        this.name = name;
+    }
+
+    public void setNumberOfPages(int numberOfPages) {
+        this.numberOfPages = numberOfPages;
+    }
+
+    public int getNumberOfPages() {
+        return numberOfPages;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Book)) return false;
+        Book book = (Book) o;
+        return getNumberOfPages() == book.getNumberOfPages() && Objects.equals(getName(), book.getName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getNumberOfPages(), getName());
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "numberOfPages=" + numberOfPages +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
