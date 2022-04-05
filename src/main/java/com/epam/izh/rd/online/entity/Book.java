@@ -1,5 +1,7 @@
 package com.epam.izh.rd.online.entity;
 
+import java.util.Objects;
+
 /**
  * Базовая сущность для книги. Содержит базовые поля.
  *
@@ -42,13 +44,16 @@ public abstract class Book {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return numberOfPages == book.numberOfPages && name.equals(book.name);
     }
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        return Objects.hash(numberOfPages, name);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.epam.izh.rd.online.entity;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 /**
  * Сущность учебника. Он должен быть унаследован от сущности Book
@@ -60,24 +61,17 @@ public class SchoolBook extends Book {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (obj == this) {
-            return true;
-        } else if ((obj == null || getClass() != obj.getClass()) || !super.equals(obj)) {
-            return false;
-        }
-        SchoolBook other = (SchoolBook) obj;
-        boolean isName = this.getName() == null && other.getName() == null || this.getName() != null && this.getName().equals(other.getName());
-        boolean isAuthorName = this.authorName == null && other.authorName == null || this.authorName != null && this.authorName.equals(other.authorName);
-        boolean isAuthorLastName = this.authorLastName == null && other.authorLastName == null || this.authorLastName != null && this.authorLastName.equals(other.authorLastName);
-        boolean isPublishDate = this.publishDate == null && other.publishDate == null || this.publishDate != null && this.publishDate.equals(other.publishDate);
-        boolean isEqual = (isName && isAuthorName && isAuthorLastName && isPublishDate);
-        return this.getNumberOfPages() == other.getNumberOfPages() && isEqual;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        SchoolBook that = (SchoolBook) o;
+        return authorName.equals(that.authorName) && authorLastName.equals(that.authorLastName) && publishDate.equals(that.publishDate);
     }
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        return Objects.hash(super.hashCode(), authorName, authorLastName, publishDate);
     }
 
     @Override
