@@ -67,24 +67,16 @@ public class Author {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (obj == this) {
-            return true;
-        } else if ((obj == null || getClass() != obj.getClass())) {
-            return false;
-        }
-        Author other = (Author) obj;
-        boolean isName = this.name == null && other.name == null || this.name != null && this.name.equals(other.name);
-        boolean isLastname = this.lastName == null && other.lastName == null || this.lastName != null && this.lastName.equals(other.lastName);;
-        boolean isBirthDate = this.birthdate == null && other.birthdate == null || this.birthdate != null && this.birthdate.equals(other.birthdate);;
-        boolean isCountry = this.country == null && other.country == null || this.country != null && this.country.equals(other.country);;
-        boolean isEqual = (isName && isLastname && isBirthDate && isCountry);
-        return isEqual;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Author author = (Author) o;
+        return name.equals(author.name) && lastName.equals(author.lastName) && birthdate.equals(author.birthdate) && country.equals(author.country);
     }
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        return Objects.hash(name, lastName, birthdate, country);
     }
 
     @Override
