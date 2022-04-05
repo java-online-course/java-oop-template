@@ -1,7 +1,5 @@
 package com.epam.izh.rd.online.entity;
 
-import java.util.Objects;
-
 /**
  * Базовая сущность для книги. Содержит базовые поля.
  *

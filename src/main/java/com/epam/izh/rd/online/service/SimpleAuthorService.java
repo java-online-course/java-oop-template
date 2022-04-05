@@ -16,7 +16,7 @@ public class SimpleAuthorService implements AuthorService {
 
     @Override
     public boolean save(Author author) {
-        return false;
+        return authorRepository.save(author);
     }
 
     @Override

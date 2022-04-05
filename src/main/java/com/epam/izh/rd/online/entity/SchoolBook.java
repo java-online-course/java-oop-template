@@ -1,11 +1,10 @@
 package com.epam.izh.rd.online.entity;
 
 import java.time.LocalDate;
-import java.util.Objects;
 
 /**
  * Сущность учебника. Он должен быть унаследован от сущности Book
- *
+ * <p>
  * Необходимо:
  * 1) Унаследовать данный класс от класса Book
  * 2) Создать список полей с указанными типами ровно в этом порядке:
@@ -19,9 +18,11 @@ import java.util.Objects;
  * 5) Переопределить методы equals и hashCode - используйте генерацию (не забывайте alt+inset)
  * 6) Переопределить метод toString с выводом всех полей (не забывайте alt+inset)
  */
+
+
 public class SchoolBook extends Book {
     private String authorName;
-    private String  authorLastName;
+    private String authorLastName;
     private LocalDate publishDate;
 
     public SchoolBook() {
@@ -60,7 +61,18 @@ public class SchoolBook extends Book {
 
     @Override
     public boolean equals(Object obj) {
-        return super.equals(obj);
+        if (obj == this) {
+            return true;
+        } else if ((obj == null || getClass() != obj.getClass()) || !super.equals(obj)) {
+            return false;
+        }
+        SchoolBook other = (SchoolBook) obj;
+        boolean isName = this.getName() == null && other.getName() == null || this.getName() != null && this.getName().equals(other.getName());
+        boolean isAuthorName = this.authorName == null && other.authorName == null || this.authorName != null && this.authorName.equals(other.authorName);
+        boolean isAuthorLastName = this.authorLastName == null && other.authorLastName == null || this.authorLastName != null && this.authorLastName.equals(other.authorLastName);
+        boolean isPublishDate = this.publishDate == null && other.publishDate == null || this.publishDate != null && this.publishDate.equals(other.publishDate);
+        boolean isEqual = (isName && isAuthorName && isAuthorLastName && isPublishDate);
+        return this.getNumberOfPages() == other.getNumberOfPages() && isEqual;
     }
 
     @Override

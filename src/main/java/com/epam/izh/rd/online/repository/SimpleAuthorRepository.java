@@ -5,7 +5,7 @@ import com.epam.izh.rd.online.entity.Author;
 import java.util.Arrays;
 import java.util.Objects;
 
-public class SimpleAuthorService implements AuthorRepository {
+public class SimpleAuthorRepository implements AuthorRepository {
 
     private Author[] authors = new Author[0];
 
@@ -27,8 +27,9 @@ public class SimpleAuthorService implements AuthorRepository {
         boolean isName = false;
         boolean isLastName = false;
         for (Author authorForEach : authors) {
-            isName = Arrays.stream(authors).anyMatch(name::equals);
-            isLastName = Arrays.stream(authors).anyMatch(lastname::equals);
+//            Arrays.stream(authors).forEach(authorForEach.getName()::equals);
+            isName = name == authorForEach.getName();
+            isLastName = lastname == authorForEach.getLastName();
             if (isName && isLastName) {
                 return authorForEach;
             }
@@ -38,22 +39,14 @@ public class SimpleAuthorService implements AuthorRepository {
 
     @Override
     public boolean remove(Author author) {
-        boolean isName = false;
-        boolean isLastName = false;
-        boolean isAuthor = Objects.nonNull(findByFullName(author.getName(), author.getLastName()));
+        boolean isAuthor = author.equals(findByFullName(author.getName(), author.getLastName()));
         if (isAuthor) {
-            for (Author authorForEach : authors) {
-                isName = Arrays.stream(authors).anyMatch(author.getName()::equals);
-                isLastName = Arrays.stream(authors).anyMatch(author.getLastName()::equals);
-                if (isName && isLastName) {
-                    authorForEach = null;
-                    Author[] tempAuthors = Arrays.stream(authors).filter(Objects::nonNull).toArray(Author[]::new);
-                    authors = tempAuthors;
-                    return false;
-                }
-            }
+            Author[] tempAuthors = Arrays.stream(authors)
+                    .filter(authorDel -> !author.equals(authorDel))
+                    .toArray(Author[]::new);
+            authors = tempAuthors;
+            return true;
         }
-
         return false;
     }
 
